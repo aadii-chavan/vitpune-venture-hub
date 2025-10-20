@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Instagram, Mail, ExternalLink } from 'lucide-react';
 import logo from '@/assets/vedc-logo.png';
+import DarkVeil from '@/components/DarkVeil';
 
 const Footer = () => {
   const footerLinks = {
@@ -24,13 +25,19 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border mt-20">
+    <footer className="relative mt-20 overflow-hidden">
+      {/* Subtle animated background to match hero */}
+      <div className="absolute inset-0 -z-10 opacity-[0.35]">
+        <DarkVeil speed={0.6} hueShift={15} noiseIntensity={0.01} scanlineFrequency={0} scanlineIntensity={0} warpAmount={0.6} />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-gradient-glow/70" />
+
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo & Description */}
           <div className="space-y-4">
-            <img src={logo} alt="V-EDC Logo" className="h-12 w-auto" />
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <img src={logo} alt="V-EDC Logo" className="h-12 w-auto drop-shadow" />
+            <p className="text-sm text-white/70 leading-relaxed">
               Empowering entrepreneurship at VIT Pune through innovation, collaboration, and excellence.
             </p>
             <div className="flex gap-3">
@@ -40,7 +47,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  className="p-2 rounded-full ring-1 ring-white/10 text-white/80 hover:bg-white/10 hover:text-white transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -51,13 +58,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Quick Links</h3>
+            <h3 className="font-heading font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {footerLinks.quick.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -68,13 +75,13 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Resources</h3>
+            <h3 className="font-heading font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -85,11 +92,11 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Contact</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
+            <h3 className="font-heading font-semibold text-white mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm text-white/70">
               <li className="flex items-start gap-2">
                 <Mail size={16} className="mt-0.5 flex-shrink-0" />
-                <a href="mailto:vedc@vitpune.edu.in" className="hover:text-primary transition-colors">
+                <a href="mailto:vedc@vitpune.edu.in" className="hover:text-white transition-colors">
                   vedc@vitpune.edu.in
                 </a>
               </li>
@@ -102,8 +109,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border text-center">
-          <p className="text-sm text-muted-foreground">
+        <div className="pt-8 border-t border-white/10 text-center">
+          <p className="text-sm text-white/60">
             © {new Date().getFullYear()} V-EDC, VIT Pune. All rights reserved.
           </p>
         </div>

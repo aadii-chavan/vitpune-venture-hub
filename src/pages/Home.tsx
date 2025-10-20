@@ -44,7 +44,7 @@ const Home: React.FC = () => {
               className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black w-full sm:w-auto"
             >
               <span className="relative z-[2] flex items-center gap-2 px-6 py-3 sm:px-7">
-                <span>View Projects</span>
+                <span>Join V-EDC</span>
                 <span className="inline-block"><ArrowRight size={18} /></span>
               </span>
               <svg className="absolute inset-0 -z-0 rounded-[inherit]" width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
               onClick={() => scrollToSection('#about')}
               className="px-6 py-3 sm:px-7 rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15 transition-colors w-full sm:w-auto"
             >
-              About Me
+              View Events
             </button>
           </div>
 
