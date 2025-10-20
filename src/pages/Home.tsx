@@ -169,21 +169,70 @@ const Home: React.FC = () => {
             Explore our collection of entrepreneurship magazines and newsletters!
           </p>
         </div>
-        <div style={{ height: '600px', position: 'relative' }}>
-          <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
-            <Card>
-              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 01</h3>
-              <p className="text-slate-300/90">Your content here</p>
-            </Card>
-            <Card>
-              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 02</h3>
-              <p className="text-slate-300/90">Your content here</p>
-            </Card>
-            <Card>
-              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 03</h3>
-              <p className="text-slate-300/90">Your content here</p>
-            </Card>
-          </CardSwap>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left: Descriptive Panel */}
+          <div className="order-2 lg:order-1">
+            <div className="relative rounded-2xl border border-white/10 bg-black/40 p-6 md:p-8 shadow-[0_8px_24px_rgb(0_0_0/0.35)]">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-violet-500/10 via-indigo-500/5 to-emerald-500/10 pointer-events-none" />
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300/80 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                  <span className="size-2 rounded-full bg-violet-500" />
+                  Publications
+                </div>
+                <h3 className="mt-4 font-heading text-2xl md:text-3xl font-extrabold text-white">
+                  Curated insights from campus innovators
+                </h3>
+                <p className="mt-3 text-slate-300/90 leading-relaxed">
+                  Each issue features founder stories, market trends, event highlights, and practical playbooks crafted by the V-EDC community. Stay inspired and up to date with what’s shaping the next wave of entrepreneurship at VIT Pune.
+                </p>
+                <ul className="mt-5 space-y-3 text-slate-300/90">
+                  <li className="flex items-start gap-3">
+                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                    Actionable articles, interviews, and event recaps
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                    Designed for clarity with a beautiful reading experience
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                    Available as downloadable PDFs and web issues
+                  </li>
+                </ul>
+                <div className="mt-6">
+                  <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-700 text-white font-semibold transition">
+                    Explore Issues
+                    <ArrowRight size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: CardSwap Showcase */}
+          <div className="order-1 lg:order-2">
+            <div className="relative h-[440px] md:h-[520px] lg:h-[600px] md:-mt-8 lg:-mt-16 xl:-mt-20">
+              <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
+                <Card>
+                  <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 01</h3>
+                  <p className="text-slate-300/90">Your content here</p>
+                </Card>
+                <Card>
+                  <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 02</h3>
+                  <p className="text-slate-300/90">Your content here</p>
+                </Card>
+                <Card>
+                  <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 03</h3>
+                  <p className="text-slate-300/90">Your content here</p>
+                </Card>
+                <Card>
+                  <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 04</h3>
+                  <p className="text-slate-300/90">Your content here</p>
+                </Card>
+              </CardSwap>
+            </div>
+          </div>
         </div>
       </div>
     </section>
