@@ -189,7 +189,8 @@ const Home: React.FC = () => {
       {/* Events & Campaigns */}
       <section id="events-campaigns" className="py-20 bg-black">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+          <LaserFlowBoxExample />
+          <div className="max-w-3xl mx-auto text-center mt-10 md:mt-14">
             <ScrollFloat
               animationDuration={1}
               ease='back.inOut(2)'
@@ -204,7 +205,6 @@ const Home: React.FC = () => {
               Discover our signature events and impactful campaigns designed to inspire entrepreneurship and innovation at VIT Pune.
             </p>
           </div>
-          <LaserFlowBoxExample />
         </div>
       </section>
 
@@ -229,7 +229,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 xl:gap-8 items-center">
             <div className="order-2 lg:order-1 lg:mr-[-28px] xl:mr-[-40px]">
-              <div className="relative rounded-3xl border border-white/10 bg-black/50 backdrop-blur-sm p-6 md:p-8 lg:p-10 shadow-[0_12px_28px_rgb(0_0_0/0.35)]">
+              <div className="relative z-0 rounded-3xl border border-white/10 bg-black/50 backdrop-blur-sm p-6 md:p-8 lg:p-10 shadow-[0_12px_28px_rgb(0_0_0/0.35)]">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-violet-500/10 via-indigo-500/5 to-emerald-500/10 pointer-events-none" />
                 <div className="relative">
                   <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300/80 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
@@ -286,7 +286,7 @@ const Home: React.FC = () => {
 
             {/* Right: CardSwap Showcase */}
             <div className="order-1 lg:order-2 lg:ml-2">
-              <div className="relative h-[440px] md:h-[520px] lg:h-[600px] pt-24 md:pt-0 md:-mt-8 lg:-mt-16 xl:-mt-20">
+              <div className="relative z-30 h-[440px] md:h-[520px] lg:h-[600px] pt-24 md:pt-0 md:-mt-8 lg:-mt-16 xl:-mt-20">
                 <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
                   <Card>
                     <div className="relative w-full h-full">
