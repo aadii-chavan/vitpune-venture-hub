@@ -1,6 +1,6 @@
 import React from 'react';
 import DarkVeil from '@/components/DarkVeil';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
@@ -20,6 +20,7 @@ const Home: React.FC = () => {
   ];
 
   return (
+    <>
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* DarkVeil background */}
       <div className="absolute inset-0 z-0">
@@ -78,6 +79,44 @@ const Home: React.FC = () => {
         </div>
       </div>
     </section>
+
+    {/* Vision, Mission, Objectives */}
+    <section id="about" className="py-20 bg-transparent">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
+              <Target size={24} />
+            </div>
+            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Vision</h3>
+            <p className="text-white/70 leading-relaxed">
+              To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
+              <Lightbulb size={24} />
+            </div>
+            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Mission</h3>
+            <p className="text-white/70 leading-relaxed">
+              Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
+              <Users size={24} />
+            </div>
+            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Objectives</h3>
+            <p className="text-white/70 leading-relaxed">
+              Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 };
 
