@@ -220,17 +220,9 @@ const Home: React.FC = () => {
                   <span className="size-2 rounded-full bg-violet-500" />
                   Publications
                 </div>
-                <div className="mt-4">
-                  <ScrollReveal
-                    baseOpacity={0}
-                    enableBlur={true}
-                    baseRotation={5}
-                    blurStrength={10}
-                    textClassName="font-heading text-2xl md:text-3xl font-extrabold text-white"
-                  >
-                    Curated insights from campus innovators
-                  </ScrollReveal>
-                </div>
+                <h3 className="mt-4 font-heading text-2xl md:text-3xl font-extrabold text-white">
+                  Curated insights from campus innovators
+                </h3>
                 <div className="mt-3">
                   <ScrollReveal
                     baseOpacity={0}
