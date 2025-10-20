@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import DarkVeil from '@/components/DarkVeil';
 import { ArrowRight, Target, Lightbulb, Users, TrendingUp, Calendar, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -53,6 +54,9 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-hero">
+        <div className="absolute inset-0">
+          <DarkVeil />
+        </div>
         <div className="absolute inset-0 bg-gradient-glow" />
         
         <div className="container mx-auto px-4 relative z-10">
