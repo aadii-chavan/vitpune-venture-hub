@@ -8,6 +8,9 @@ import LaserFlow from '@/components/LaserFlow';
 import img25 from '@/assets/25.png';
 import glimpse3 from '@/assets/glimpse3.jpg';
 import esummit from '@/assets/esummit.png';
+import img2 from '@/assets/2.png';
+import mag5 from '@/assets/mag_5.jpeg';
+import mag6 from '@/assets/mag_6.jpg';
 import CardSwap, { Card } from '@/components/CardSwap';
 import Threads from '@/components/Threads';
 import ScrollFloat from '@/components/ScrollFloat';
@@ -242,7 +245,7 @@ const Home: React.FC = () => {
                       enableBlur={true}
                       baseRotation={5}
                       blurStrength={10}
-                      textClassName="text-slate-300/90 leading-relaxed"
+                      textClassName="text-sm text-slate-300/90 leading-relaxed"
                     >
                       Each issue features founder stories, market trends, event highlights, and practical playbooks crafted by the V-EDC community. Stay inspired and up to date with what's shaping the next wave of entrepreneurship at VIT Pune.
                     </ScrollReveal>
@@ -285,10 +288,46 @@ const Home: React.FC = () => {
             <div className="order-1 lg:order-2">
               <div className="relative h-[440px] md:h-[520px] lg:h-[600px] pt-24 md:pt-0 md:-mt-8 lg:-mt-16 xl:-mt-20">
                 <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
-                  <Card><h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 01</h3><p className="text-slate-300/90">Your content here</p></Card>
-                  <Card><h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 02</h3><p className="text-slate-300/90">Your content here</p></Card>
-                  <Card><h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 03</h3><p className="text-slate-300/90">Your content here</p></Card>
-                  <Card><h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 04</h3><p className="text-slate-300/90">Your content here</p></Card>
+                  <Card>
+                    <div className="relative w-full h-full">
+                      <img src={img2} alt="Magazine Issue 1" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="font-heading text-xl font-extrabold text-white mb-1">Issue 01</h3>
+                        <p className="text-white/90 text-sm">Innovation Spotlight</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card>
+                    <div className="relative w-full h-full">
+                      <img src={mag5} alt="Magazine Issue 2" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="font-heading text-xl font-extrabold text-white mb-1">Issue 02</h3>
+                        <p className="text-white/90 text-sm">Startup Stories</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card>
+                    <div className="relative w-full h-full">
+                      <img src={esummit} alt="Magazine Issue 3" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="font-heading text-xl font-extrabold text-white mb-1">Issue 03</h3>
+                        <p className="text-white/90 text-sm">E-Summit Special</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card>
+                    <div className="relative w-full h-full">
+                      <img src={mag6} alt="Magazine Issue 4" className="w-full h-full object-cover rounded-lg" />
+                      <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="font-heading text-xl font-extrabold text-white mb-1">Issue 04</h3>
+                        <p className="text-white/90 text-sm">Community Highlights</p>
+                      </div>
+                    </div>
+                  </Card>
                 </CardSwap>
               </div>
             </div>
