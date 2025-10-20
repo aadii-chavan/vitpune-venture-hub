@@ -8,6 +8,7 @@ import LaserFlow from '@/components/LaserFlow';
 import { useRef } from 'react';
 import img25 from '@/assets/25.png';
 import glimpse3 from '@/assets/glimpse3.jpg';
+import esummit from '@/assets/esummit.png';
 import CardSwap, { Card } from '@/components/CardSwap';
 import Threads from '@/components/Threads';
 import ScrollFloat from '@/components/ScrollFloat';
@@ -349,12 +350,30 @@ function LaserFlowBoxExample() {
         fontSize: '2rem',
         zIndex: 6
       }}>
-        {/* Replacing previous text content with image */}
+        {/* Main image - E-Summit 25 */}
         <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '90%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
+        
+        {/* Additional glimpse3 image */}
+        <img 
+          src={glimpse3} 
+          alt="Event glimpse" 
+          style={{
+            position: 'absolute',
+            top: '10%',
+            right: '10%',
+            width: '30%',
+            height: '40%',
+            borderRadius: '12px',
+            boxShadow: '0 4px 16px rgba(76, 86, 237, 0.4)',
+            border: '1px solid #4C56ED',
+            objectFit: 'cover',
+            zIndex: 7
+          }}
+        />
       </div>
       <img
         ref={revealImgRef}
-        src={glimpse3}
+        src={esummit}
         alt="Reveal effect"
         style={{
           position: 'absolute',
