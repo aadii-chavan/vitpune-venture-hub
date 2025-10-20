@@ -187,7 +187,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Events & Campaigns */}
-      <section id="events-campaigns" className="py-20 bg-black">
+      <section id="events-campaigns" className="pt-0 pb-20 bg-black">
         <div className="container mx-auto px-4">
           <LaserFlowBoxExample />
           <div className="max-w-3xl mx-auto text-center mt-10 md:mt-14">
@@ -345,7 +345,7 @@ function LaserFlowBoxExample() {
     <div 
       style={{ 
         width: '100vw',
-        height: '800px', 
+        height: '75vh', 
         position: 'relative', 
         overflow: 'hidden',
         backgroundColor: '#060010',
@@ -396,8 +396,8 @@ function LaserFlowBoxExample() {
         top: '50%',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '86%',
-        height: '60%',
+        width: '92%',
+        height: '58%',
         backgroundColor: '#060010',
         borderRadius: '20px',
         border: '2px solid #4C56ED',
@@ -405,11 +405,11 @@ function LaserFlowBoxExample() {
         alignItems: 'center',
         justifyContent: 'center',
         color: 'white',
-        fontSize: '2rem',
+        fontSize: '1.5rem',
         zIndex: 6
       }}>
         {/* Main image - E-Summit 25 */}
-        <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '90%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
+        <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '88%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
         
         {/* Additional glimpse3 image */}
         <img 
@@ -417,10 +417,10 @@ function LaserFlowBoxExample() {
           alt="Event glimpse" 
           style={{
             position: 'absolute',
-            top: '10%',
-            right: '10%',
-            width: '30%',
-            height: '40%',
+            top: '8%',
+            right: '6%',
+            width: '32%',
+            height: '38%',
             borderRadius: '12px',
             boxShadow: '0 4px 16px rgba(76, 86, 237, 0.4)',
             border: '1px solid #4C56ED',
@@ -435,11 +435,11 @@ function LaserFlowBoxExample() {
         alt="Reveal effect"
         style={{
           position: 'absolute',
-          width: '100%',
-          top: '-50%',
+          width: '120%',
+          top: '-60%',
           zIndex: 5,
           mixBlendMode: 'lighten',
-          opacity: 0.3,
+          opacity: 0.25,
           pointerEvents: 'none',
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore Allow CSS custom properties
