@@ -8,6 +8,7 @@ import LaserFlow from '@/components/LaserFlow';
 import { useRef } from 'react';
 import img25 from '@/assets/25.png';
 import glimpse3 from '@/assets/glimpse3.jpg';
+import CardSwap, { Card } from '@/components/CardSwap';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -92,51 +93,48 @@ const Home: React.FC = () => {
         <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
           Vision, Mission & Objectives
         </h2>
+        <p className="mt-4 text-base md:text-lg text-slate-300/90">
+          What drives V-EDC: our long-term vision, our core mission, and the outcomes we pursue.
+        </p>
       </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="flex items-center gap-2">
-                <div className="size-3 rounded-full bg-emerald-500 animate-pulse" />
-                <div className="text-xs text-slate-400">Aim</div>
+            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                <Target size={20} className="text-white/80" />
               </div>
-              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
-                <Target size={22} />
-                <span>Our Vision</span>
+              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                Our Vision
               </div>
-              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
+              <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
               </p>
             </div>
           </PinContainer>
 
           <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="flex items-center gap-2">
-                <div className="size-3 rounded-full bg-sky-500 animate-pulse" />
-                <div className="text-xs text-slate-400">Focus</div>
+            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                <Lightbulb size={20} className="text-white/80" />
               </div>
-              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
-                <Lightbulb size={22} />
-                <span>Our Mission</span>
+              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                Our Mission
               </div>
-              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
+              <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
               </p>
             </div>
           </PinContainer>
 
           <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="flex items-center gap-2">
-                <div className="size-3 rounded-full bg-violet-500 animate-pulse" />
-                <div className="text-xs text-slate-400">Outcome</div>
+            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                <Users size={20} className="text-white/80" />
               </div>
-              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
-                <Users size={22} />
-                <span>Our Objectives</span>
+              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                Our Objectives
               </div>
-              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
+              <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
               </p>
             </div>
@@ -157,6 +155,36 @@ const Home: React.FC = () => {
           </p>
         </div>
         <LaserFlowBoxExample />
+      </div>
+    </section>
+
+    {/* V-EDC Magazines */}
+    <section id="vedc-magazines" className="py-20 bg-transparent">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            V-EDC Magazines
+          </h2>
+          <p className="mt-4 text-base md:text-lg text-slate-300/90">
+            Explore our collection of entrepreneurship magazines and newsletters!
+          </p>
+        </div>
+        <div style={{ height: '600px', position: 'relative' }}>
+          <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
+            <Card>
+              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 01</h3>
+              <p className="text-slate-300/90">Your content here</p>
+            </Card>
+            <Card>
+              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 02</h3>
+              <p className="text-slate-300/90">Your content here</p>
+            </Card>
+            <Card>
+              <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 03</h3>
+              <p className="text-slate-300/90">Your content here</p>
+            </Card>
+          </CardSwap>
+        </div>
       </div>
     </section>
     </>
