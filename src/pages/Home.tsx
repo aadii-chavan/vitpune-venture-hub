@@ -1,6 +1,7 @@
 import React from 'react';
 import DarkVeil from '@/components/DarkVeil';
 import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
+import { PinContainer } from '@/components/ui/3d-pin';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
@@ -83,36 +84,59 @@ const Home: React.FC = () => {
     {/* Vision, Mission, Objectives */}
     <section id="about" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
+      <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+        <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          Vision, Mission & Objectives
+        </h2>
+      </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
-              <Target size={24} />
+          <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[20rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+              <div className="flex items-center gap-2">
+                <div className="size-3 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="text-xs text-slate-400">Aim</div>
+              </div>
+              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+                <Target size={22} />
+                <span>Our Vision</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+                To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
+              </p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Vision</h3>
-            <p className="text-white/70 leading-relaxed">
-              To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
-            </p>
-          </div>
+          </PinContainer>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
-              <Lightbulb size={24} />
+          <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[20rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+              <div className="flex items-center gap-2">
+                <div className="size-3 rounded-full bg-sky-500 animate-pulse" />
+                <div className="text-xs text-slate-400">Focus</div>
+              </div>
+              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+                <Lightbulb size={22} />
+                <span>Our Mission</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+                Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
+              </p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Mission</h3>
-            <p className="text-white/70 leading-relaxed">
-              Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
-            </p>
-          </div>
+          </PinContainer>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-white/20 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center mb-4">
-              <Users size={24} />
+          <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[20rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+              <div className="flex items-center gap-2">
+                <div className="size-3 rounded-full bg-violet-500 animate-pulse" />
+                <div className="text-xs text-slate-400">Outcome</div>
+              </div>
+              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+                <Users size={22} />
+                <span>Our Objectives</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+                Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
+              </p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-white mb-2">Our Objectives</h3>
-            <p className="text-white/70 leading-relaxed">
-              Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
-            </p>
-          </div>
+          </PinContainer>
         </div>
       </div>
     </section>
