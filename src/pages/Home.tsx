@@ -12,6 +12,7 @@ import esummit from '@/assets/esummit.png';
 import CardSwap, { Card } from '@/components/CardSwap';
 import Threads from '@/components/Threads';
 import ScrollFloat from '@/components/ScrollFloat';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -108,7 +109,7 @@ const Home: React.FC = () => {
           scrollStart='center bottom+=50%'
           scrollEnd='bottom bottom-=40%'
           stagger={0.03}
-          textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+          textClassName="font-heading text-4xl md:text-5xl font-extrabold tracking-tight text-white"
         >
           Vision, Mission & Objectives
         </ScrollFloat>
@@ -177,8 +178,8 @@ const Home: React.FC = () => {
             ease='back.inOut(2)'
             scrollStart='center bottom+=50%'
             scrollEnd='bottom bottom-=40%'
-            stagger={0.03}
-            textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+            stagger={0.05}
+            textClassName="font-heading text-4xl md:text-5xl font-extrabold tracking-tight text-white"
           >
             Events and Campaigns
           </ScrollFloat>
@@ -199,8 +200,8 @@ const Home: React.FC = () => {
             ease='back.inOut(2)'
             scrollStart='center bottom+=50%'
             scrollEnd='bottom bottom-=40%'
-            stagger={0.03}
-            textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+            stagger={0.05}
+            textClassName="font-heading text-4xl md:text-5xl font-extrabold tracking-tight text-white"
           >
             V-EDC Magazines
           </ScrollFloat>
@@ -219,26 +220,52 @@ const Home: React.FC = () => {
                   <span className="size-2 rounded-full bg-violet-500" />
                   Publications
                 </div>
-                <h3 className="mt-4 font-heading text-2xl md:text-3xl font-extrabold text-white">
-                  Curated insights from campus innovators
-                </h3>
-                <p className="mt-3 text-slate-300/90 leading-relaxed">
-                  Each issue features founder stories, market trends, event highlights, and practical playbooks crafted by the V-EDC community. Stay inspired and up to date with what’s shaping the next wave of entrepreneurship at VIT Pune.
-                </p>
-                <ul className="mt-5 space-y-3 text-slate-300/90">
-                  <li className="flex items-start gap-3">
-                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
-                    Actionable articles, interviews, and event recaps
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
-                    Designed for clarity with a beautiful reading experience
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <ArrowRight className="mt-0.5 text-violet-400" size={18} />
-                    Available as downloadable PDFs and web issues
-                  </li>
-                </ul>
+                <div className="mt-4">
+                  <ScrollReveal
+                    baseOpacity={0}
+                    enableBlur={true}
+                    baseRotation={5}
+                    blurStrength={10}
+                    textClassName="font-heading text-2xl md:text-3xl font-extrabold text-white"
+                  >
+                    Curated insights from campus innovators
+                  </ScrollReveal>
+                </div>
+                <div className="mt-3">
+                  <ScrollReveal
+                    baseOpacity={0}
+                    enableBlur={true}
+                    baseRotation={5}
+                    blurStrength={10}
+                    textClassName="text-slate-300/90 leading-relaxed"
+                  >
+                    Each issue features founder stories, market trends, event highlights, and practical playbooks crafted by the V-EDC community. Stay inspired and up to date with what's shaping the next wave of entrepreneurship at VIT Pune.
+                  </ScrollReveal>
+                </div>
+                <div className="mt-5">
+                  <ScrollReveal
+                    baseOpacity={0}
+                    enableBlur={true}
+                    baseRotation={5}
+                    blurStrength={10}
+                    textClassName="text-slate-300/90"
+                  >
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                        Actionable articles, interviews, and event recaps
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                        Designed for clarity with a beautiful reading experience
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <ArrowRight className="mt-0.5 text-violet-400" size={18} />
+                        Available as downloadable PDFs and web issues
+                      </li>
+                    </ul>
+                  </ScrollReveal>
+                </div>
                 <div className="mt-6">
                   <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-700 text-white font-semibold transition">
                     Explore Issues
