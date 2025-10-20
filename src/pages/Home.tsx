@@ -99,12 +99,14 @@ const Home: React.FC = () => {
       </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <Target size={20} className="text-white/80" />
-              </div>
-              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                Our Vision
+            <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                  <Target size={20} className="text-white/80" />
+                </div>
+                <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                  Our Vision
+                </div>
               </div>
               <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
@@ -113,12 +115,14 @@ const Home: React.FC = () => {
           </PinContainer>
 
           <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <Lightbulb size={20} className="text-white/80" />
-              </div>
-              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                Our Mission
+            <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                  <Lightbulb size={20} className="text-white/80" />
+                </div>
+                <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                  Our Mission
+                </div>
               </div>
               <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
@@ -127,12 +131,14 @@ const Home: React.FC = () => {
           </PinContainer>
 
           <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col gap-4 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <Users size={20} className="text-white/80" />
-              </div>
-              <div className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                Our Objectives
+            <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                  <Users size={20} className="text-white/80" />
+                </div>
+                <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
+                  Our Objectives
+                </div>
               </div>
               <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
                 Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
@@ -212,7 +218,7 @@ const Home: React.FC = () => {
 
           {/* Right: CardSwap Showcase */}
           <div className="order-1 lg:order-2">
-            <div className="relative h-[440px] md:h-[520px] lg:h-[600px] md:-mt-8 lg:-mt-16 xl:-mt-20">
+            <div className="relative h-[440px] md:h-[520px] lg:h-[600px] pt-24 md:pt-0 md:-mt-8 lg:-mt-16 xl:-mt-20">
               <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
                 <Card>
                   <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100 mb-2">Issue 01</h3>
