@@ -25,12 +25,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative mt-20 overflow-hidden">
+    <footer className="relative mt-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Subtle animated background to match hero */}
-      <div className="absolute inset-0 -z-10 opacity-[0.35]">
+      <div className="absolute inset-0 -z-10 opacity-[0.25]">
         <DarkVeil speed={0.6} hueShift={15} noiseIntensity={0.01} scanlineFrequency={0} scanlineIntensity={0} warpAmount={0.6} />
       </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-glow/70" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-800/50 to-slate-900/50" />
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
