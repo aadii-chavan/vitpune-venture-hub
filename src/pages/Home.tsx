@@ -55,7 +55,14 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0">
-          <DarkVeil hueShift={20} />
+          <DarkVeil
+            speed={2.4}
+            hueShift={15}
+            noiseIntensity={0.02}
+            scanlineFrequency={4.6}
+            scanlineIntensity={0}
+            warpAmount={1.5}
+          />
         </div>
         <div className="absolute inset-0 bg-gradient-glow" />
         
