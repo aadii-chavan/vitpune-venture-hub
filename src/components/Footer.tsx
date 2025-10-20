@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Instagram, Mail, ExternalLink } from 'lucide-react';
-import logo from '@/assets/vedc-logo.png';
+import logo from '@/assets/logo.png';
 import DarkVeil from '@/components/DarkVeil';
 
 const Footer = () => {
@@ -33,14 +33,14 @@ const Footer = () => {
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-800/50 to-slate-900/50" />
 
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-center md:text-left">
           {/* Logo & Description */}
-          <div className="space-y-4">
-            <img src={logo} alt="V-EDC Logo" className="h-12 w-auto drop-shadow" />
+          <div className="space-y-4 flex flex-col items-center md:items-start">
+            <img src={logo} alt="V-EDC Logo" className="h-12 w-auto drop-shadow mx-auto md:mx-0" />
             <p className="text-sm text-white/70 leading-relaxed">
               Empowering entrepreneurship at VIT Pune through innovation, collaboration, and excellence.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-center md:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-heading font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {footerLinks.quick.map((link) => (
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
 
           {/* Resources */}
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-heading font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
@@ -91,16 +91,16 @@ const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-heading font-semibold text-white mb-4">Contact</h3>
             <ul className="space-y-3 text-sm text-white/70">
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 justify-center md:justify-start">
                 <Mail size={16} className="mt-0.5 flex-shrink-0" />
                 <a href="mailto:vedc@vitpune.edu.in" className="hover:text-white transition-colors">
                   vedc@vitpune.edu.in
                 </a>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 justify-center md:justify-start">
                 <ExternalLink size={16} className="mt-0.5 flex-shrink-0" />
                 <span>VIT Pune Campus</span>
               </li>

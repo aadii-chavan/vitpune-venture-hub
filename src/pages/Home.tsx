@@ -17,6 +17,7 @@ import ScrollFloat from '@/components/ScrollFloat';
 import ScrollReveal from '@/components/ScrollReveal';
 import logo from "@/assets/logo.png";
 import { Link } from 'react-router-dom';
+import HeroSection from '@/components/Hero';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -51,65 +52,7 @@ const Home: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* DarkVeil Background */}
-        <div className="absolute inset-0 z-0">
-          <DarkVeil speed={1.4} />
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-6 sm:space-y-8 md:space-y-10 [&>*:last-child]:mb-0">
-            
-            {/* ✅ Logo Only (left aligned, no border/text) */}
-            <div className="flex justify-start">
-              <Link to="/" className={styles.logoWrapper}>
-                <div className={styles.logoBox}>
-                  <img src={logo} alt="V-EDC logo" className={styles.logoImg} />
-                </div>
-              </Link>
-            </div>
-
-            <div className="relative">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
-                Inspire • Innovate • Empower
-              </h2>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-            </div>
-
-            <div className="space-y-4 sm:space-y-6">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white/90 leading-tight">
-                Nurturing innovation and fostering startups at VIT Pune
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed px-2">
-                Inspire, Innovate, Incubate. Building the future of entrepreneurship through clear vision and actionable mission
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-              <button
-                onClick={() => scrollToSection('#projects')}
-                className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black w-full sm:w-auto"
-              >
-                <span className="relative z-[2] flex items-center gap-2 px-6 py-3 sm:px-7">
-                  <span>Join V-EDC</span>
-                  <ArrowRight size={18} />
-                </span>
-                <svg className="absolute inset-0 -z-0 rounded-[inherit]" width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
-                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="transparent" />
-                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" className="transition-colors fill-black/70 group-hover:fill-white" />
-                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" className="animate-dash" />
-                </svg>
-              </button>
-              <button
-                onClick={() => scrollToSection('#about')}
-                className="px-6 py-3 sm:px-7 rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15 transition-colors w-full sm:w-auto"
-              >
-                View Events
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Vision, Mission, Objectives */}
       <section id="about" className="py-20 bg-transparent relative">
@@ -411,23 +354,6 @@ function LaserFlowBoxExample() {
         {/* Main image - E-Summit 25 */}
         <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '90%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
         
-        {/* Additional glimpse3 image */}
-        <img 
-          src={glimpse3} 
-          alt="Event glimpse" 
-          style={{
-            position: 'absolute',
-            top: '10%',
-            right: '10%',
-            width: '30%',
-            height: '40%',
-            borderRadius: '12px',
-            boxShadow: '0 4px 16px rgba(76, 86, 237, 0.4)',
-            border: '1px solid #4C56ED',
-            objectFit: 'cover',
-            zIndex: 7
-          }}
-        />
       </div>
       <img
         ref={revealImgRef}
