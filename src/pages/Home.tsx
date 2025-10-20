@@ -9,6 +9,7 @@ import { useRef } from 'react';
 import img25 from '@/assets/25.png';
 import glimpse3 from '@/assets/glimpse3.jpg';
 import CardSwap, { Card } from '@/components/CardSwap';
+import Threads from '@/components/Threads';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -87,8 +88,17 @@ const Home: React.FC = () => {
     </section>
 
     {/* Vision, Mission, Objectives */}
-    <section id="about" className="py-20 bg-transparent">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-transparent relative">
+      {/* Threads Background */}
+      <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
+        <Threads
+          amplitude={1}
+          distance={0}
+          enableMouseInteraction={true}
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
         <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
           Vision, Mission & Objectives
