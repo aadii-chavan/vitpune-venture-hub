@@ -10,6 +10,7 @@ import img25 from '@/assets/25.png';
 import glimpse3 from '@/assets/glimpse3.jpg';
 import CardSwap, { Card } from '@/components/CardSwap';
 import Threads from '@/components/Threads';
+import ScrollFloat from '@/components/ScrollFloat';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -92,17 +93,24 @@ const Home: React.FC = () => {
       {/* Threads Background */}
       <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
         <Threads
-          amplitude={1}
-          distance={0}
+          amplitude={4.3}
+          distance={0.7}
           enableMouseInteraction={true}
         />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
       <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-        <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+        <ScrollFloat
+          animationDuration={1}
+          ease='back.inOut(2)'
+          scrollStart='center bottom+=50%'
+          scrollEnd='bottom bottom-=40%'
+          stagger={0.03}
+          textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+        >
           Vision, Mission & Objectives
-        </h2>
+        </ScrollFloat>
         <p className="mt-4 text-base md:text-lg text-slate-300/90">
           What drives V-EDC: our long-term vision, our core mission, and the outcomes we pursue.
         </p>
@@ -163,9 +171,16 @@ const Home: React.FC = () => {
     <section id="events-campaigns" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <ScrollFloat
+            animationDuration={1}
+            ease='back.inOut(2)'
+            scrollStart='center bottom+=50%'
+            scrollEnd='bottom bottom-=40%'
+            stagger={0.03}
+            textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+          >
             Events and Campaigns
-          </h2>
+          </ScrollFloat>
           <p className="mt-4 text-base md:text-lg text-slate-300/90">
             Discover our signature events and impactful campaigns designed to inspire entrepreneurship and innovation at VIT Pune.
           </p>
@@ -178,9 +193,16 @@ const Home: React.FC = () => {
     <section id="vedc-magazines" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <ScrollFloat
+            animationDuration={1}
+            ease='back.inOut(2)'
+            scrollStart='center bottom+=50%'
+            scrollEnd='bottom bottom-=40%'
+            stagger={0.03}
+            textClassName="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white"
+          >
             V-EDC Magazines
-          </h2>
+          </ScrollFloat>
           <p className="mt-4 text-base md:text-lg text-slate-300/90">
             Explore our collection of entrepreneurship magazines and newsletters!
           </p>
