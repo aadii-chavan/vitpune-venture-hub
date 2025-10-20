@@ -96,11 +96,11 @@ const Home: React.FC = () => {
                 <div className="size-3 rounded-full bg-emerald-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Aim</div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
                 <Target size={22} />
                 <span>Our Vision</span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
                 To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
               </p>
             </div>
@@ -112,11 +112,11 @@ const Home: React.FC = () => {
                 <div className="size-3 rounded-full bg-sky-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Focus</div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
                 <Lightbulb size={22} />
                 <span>Our Mission</span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
                 Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
               </p>
             </div>
@@ -128,11 +128,11 @@ const Home: React.FC = () => {
                 <div className="size-3 rounded-full bg-violet-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Outcome</div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-100">
+              <div className="mt-4 flex items-center gap-2 font-heading text-2xl md:text-3xl font-bold text-slate-100">
                 <Users size={22} />
                 <span>Our Objectives</span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-300/90">
                 Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
               </p>
             </div>
