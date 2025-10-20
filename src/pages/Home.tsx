@@ -89,9 +89,9 @@ const Home: React.FC = () => {
           Vision, Mission & Objectives
         </h2>
       </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
               <div className="flex items-center gap-2">
                 <div className="size-3 rounded-full bg-emerald-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Aim</div>
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
           </PinContainer>
 
           <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
               <div className="flex items-center gap-2">
                 <div className="size-3 rounded-full bg-sky-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Focus</div>
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
           </PinContainer>
 
           <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/80 w-[22rem] h-[16rem]">
               <div className="flex items-center gap-2">
                 <div className="size-3 rounded-full bg-violet-500 animate-pulse" />
                 <div className="text-xs text-slate-400">Outcome</div>
