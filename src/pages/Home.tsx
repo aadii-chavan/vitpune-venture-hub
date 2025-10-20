@@ -352,25 +352,10 @@ function LaserFlowBoxExample() {
         zIndex: 6
       }}>
         {/* Main image - E-Summit 25 */}
-        <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '88%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
+        <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '90%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
         
         {/* Additional glimpse3 image */}
-        <img 
-          src={glimpse3} 
-          alt="Event glimpse" 
-          style={{
-            position: 'absolute',
-            top: '10%',
-            right: '10%',
-            width: '30%',
-            height: '40%',
-            borderRadius: '12px',
-            boxShadow: '0 4px 16px rgba(76, 86, 237, 0.4)',
-            border: '1px solid #4C56ED',
-            objectFit: 'cover',
-            zIndex: 7
-          }}
-        />
+        
       </div>
       <img
         ref={revealImgRef}
