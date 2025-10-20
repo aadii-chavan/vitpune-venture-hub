@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 217 33% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 217 28% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 217 28% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 28% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 28% 14%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 217 50% 30%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 28% 14%;
+    --input: 217 28% 14%;
+    --ring: 217 91% 60%;
+
+    --radius: 1rem;
+
+    /* V-EDC Custom Design Tokens */
+    --navy-base: 217 33% 6%;
+    --navy-secondary: 217 28% 10%;
+    --navy-accent: 217 50% 30%;
+    --highlight: 217 91% 60%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 210 17% 90%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(217 33% 6%) 0%, hsl(217 50% 12%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(217 28% 10%) 0%, hsl(217 28% 8%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(217 91% 60% / 0.15), transparent 70%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(217 33% 6% / 0.3);
+    --shadow-md: 0 4px 16px hsl(217 33% 6% / 0.4);
+    --shadow-lg: 0 8px 32px hsl(217 33% 6% / 0.5);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.2);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
