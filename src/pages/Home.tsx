@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-hero">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0">
           <DarkVeil
             speed={2.4}
@@ -66,50 +66,56 @@ const Home = () => {
         </div>
         <div className="absolute inset-0 bg-gradient-glow" />
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className="space-y-6 sm:space-y-8 md:space-y-10 [&>*:last-child]:mb-0"
           >
             <motion.h1
-              className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6"
+              className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white/90 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Empowering Entrepreneurship at{' '}
-              <span className="text-primary">VIT Pune</span>
+              Empowering Entrepreneurship at <span className="text-primary">VIT Pune</span>
             </motion.h1>
             
             <motion.p
-              className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              The Entrepreneurship Development Council at VIT Pune is dedicated to nurturing innovation, 
-              fostering collaboration, and building the next generation of entrepreneurs through events, 
-              mentorship, and a thriving community.
+              The Entrepreneurship Development Council at VIT Pune is dedicated to nurturing innovation, fostering collaboration, and building the next generation of entrepreneurs through events, mentorship, and a thriving community.
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Link to="/contact">
-                <Button size="lg" className="group">
-                  Join V-EDC
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                </Button>
+                <button
+                  className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black w-full sm:w-auto"
+                >
+                  <span className="relative z-[2] flex items-center gap-2 px-6 py-3 sm:px-7">
+                    <span>Join V-EDC</span>
+                    <span className="inline-block"><ArrowRight size={18} /></span>
+                  </span>
+                  <svg className="absolute inset-0 -z-0 rounded-[inherit]" width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="transparent" />
+                    <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" className="transition-colors fill-black/70 group-hover:fill-white" />
+                    <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" className="animate-dash" />
+                  </svg>
+                </button>
               </Link>
               <Link to="/events">
-                <Button size="lg" variant="secondary">
+                <button className="px-6 py-3 sm:px-7 rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15 transition-colors w-full sm:w-auto">
                   View Events
-                </Button>
+                </button>
               </Link>
             </motion.div>
           </motion.div>
@@ -117,7 +123,7 @@ const Home = () => {
       </section>
 
       {/* Vision, Mission, Objectives */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {visionMissionCards.map((card, index) => (
