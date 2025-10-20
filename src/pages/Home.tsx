@@ -227,16 +227,16 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="relative rounded-2xl border border-white/10 bg-black/40 p-6 md:p-8 shadow-[0_8px_24px_rgb(0_0_0/0.35)]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 xl:gap-8 items-center">
+            <div className="order-2 lg:order-1 lg:mr-[-28px] xl:mr-[-40px]">
+              <div className="relative rounded-3xl border border-white/10 bg-black/50 backdrop-blur-sm p-6 md:p-8 lg:p-10 shadow-[0_12px_28px_rgb(0_0_0/0.35)]">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-violet-500/10 via-indigo-500/5 to-emerald-500/10 pointer-events-none" />
                 <div className="relative">
                   <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300/80 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
                     <span className="size-2 rounded-full bg-violet-500" />
                     Publications
                   </div>
-                  <h3 className="mt-4 font-heading text-2xl md:text-3xl font-extrabold text-white">
+                  <h3 className="mt-4 font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
                     Curated insights from campus innovators
                   </h3>
                   <div className="mt-3">
@@ -275,9 +275,9 @@ const Home: React.FC = () => {
                     </ScrollReveal>
                   </div>
                   <div className="mt-6">
-                    <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-700 text-white font-semibold transition">
+                    <a href="#" className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-700 text-white font-semibold transition shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-violet-400/60">
                       Explore Issues
-                      <ArrowRight size={18} />
+                      <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
                     </a>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Right: CardSwap Showcase */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 lg:ml-2">
               <div className="relative h-[440px] md:h-[520px] lg:h-[600px] pt-24 md:pt-0 md:-mt-8 lg:-mt-16 xl:-mt-20">
                 <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
                   <Card>
