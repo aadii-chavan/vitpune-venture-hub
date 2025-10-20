@@ -200,6 +200,18 @@ function LaserFlowBoxExample() {
         horizontalBeamOffset={0.1}
         verticalBeamOffset={0.0}
         color="#4C56ED"
+        horizontalSizing={0.51}
+        verticalSizing={5}
+        wispDensity={5}
+        wispSpeed={4.5}
+        wispIntensity={17.2}
+        flowSpeed={0.55}
+        flowStrength={0.26}
+        fogIntensity={0.57}
+        fogScale={0.42}
+        fogFallSpeed={0.94}
+        decay={1.98}
+        falloffStart={0.68}
       />
       <div style={{
         position: 'absolute',
