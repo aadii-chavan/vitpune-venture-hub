@@ -5,8 +5,18 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import EventCard from '@/components/EventCard';
 import SectionHeader from '@/components/SectionHeader';
+import LogoLoop, { type LogoItem } from '@/components/LogoLoop';
+import vedcLogo from '@/assets/vedc-logo.png';
 
 const Home = () => {
+  const techLogos: LogoItem[] = [
+    { src: vedcLogo, alt: 'V-EDC' },
+    { src: vedcLogo, alt: 'V-EDC' },
+    { src: vedcLogo, alt: 'V-EDC' },
+    { src: vedcLogo, alt: 'V-EDC' },
+    { src: vedcLogo, alt: 'V-EDC' }
+  ];
+
   const stats = [
     { label: 'Active Members', value: '500+', icon: Users },
     { label: 'Startups Mentored', value: '50+', icon: TrendingUp },
@@ -56,12 +66,12 @@ const Home = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0">
           <DarkVeil
-            speed={2.4}
+            speed={1}
             hueShift={15}
             noiseIntensity={0.02}
             scanlineFrequency={4.6}
             scanlineIntensity={0}
-            warpAmount={1.5}
+            warpAmount={0.9}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-glow" />
@@ -117,6 +127,26 @@ const Home = () => {
                   View Events
                 </button>
               </Link>
+            </motion.div>
+
+            <motion.div
+              className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-0 relative left-1/2 -translate-x-1/2 w-screen"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <LogoLoop
+                logos={techLogos}
+                speed={100}
+                direction="left"
+                logoHeight={55}
+                gap={50}
+                pauseOnHover
+                scaleOnHover
+                fadeOut
+                width="100vw"
+                ariaLabel="Technology partners"
+              />
             </motion.div>
           </motion.div>
         </div>
