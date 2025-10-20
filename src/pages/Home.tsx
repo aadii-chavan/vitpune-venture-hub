@@ -4,6 +4,9 @@ import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
 import { PinContainer } from '@/components/ui/3d-pin';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import LaserFlow from '@/components/LaserFlow';
+import { useRef } from 'react';
+import img25 from '@/assets/25.png';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -140,8 +143,110 @@ const Home: React.FC = () => {
         </div>
       </div>
     </section>
+
+    {/* Events and Campaigns */}
+    <section id="events-campaigns" className="py-20 bg-black">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            Events and Campaigns
+          </h2>
+          <p className="mt-4 text-base md:text-lg text-slate-300/90">
+            Discover our signature events and impactful campaigns designed to inspire entrepreneurship and innovation at VIT Pune.
+          </p>
+        </div>
+        <LaserFlowBoxExample />
+      </div>
+    </section>
     </>
   );
 };
+
+// LaserFlowBoxExample: Custom interactive effect revealing an image
+function LaserFlowBoxExample() {
+  const revealImgRef = useRef(null);
+
+  return (
+    <div 
+      style={{ 
+        height: '800px', 
+        position: 'relative', 
+        overflow: 'hidden',
+        backgroundColor: '#060010',
+        borderRadius: '22px',
+        margin: '0 auto',
+        maxWidth: '1000px',
+        marginBottom: '2rem'
+      }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const el = revealImgRef.current;
+        if (el) {
+          el.style.setProperty('--mx', `${x}px`);
+          el.style.setProperty('--my', `${y + rect.height * 0.5}px`);
+        }
+      }}
+      onMouseLeave={() => {
+        const el = revealImgRef.current;
+        if (el) {
+          el.style.setProperty('--mx', '-9999px');
+          el.style.setProperty('--my', '-9999px');
+        }
+      }}
+    >
+      <LaserFlow
+        horizontalBeamOffset={0.1}
+        verticalBeamOffset={0.0}
+        color="#4C56ED"
+      />
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '86%',
+        height: '60%',
+        backgroundColor: '#060010',
+        borderRadius: '20px',
+        border: '2px solid #4C56ED',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontSize: '2rem',
+        zIndex: 6
+      }}>
+        {/* Replacing previous text content with image */}
+        <img src={img25} alt="E-Summit 25" style={{maxWidth: '100%', maxHeight: '90%', borderRadius: '16px', boxShadow: '0 4px 32px #4C56ED88', border: '2px solid #4C56ED'}} />
+      </div>
+      <img
+        ref={revealImgRef}
+        src="/placeholder.svg"
+        alt="Reveal effect"
+        style={{
+          position: 'absolute',
+          width: '100%',
+          top: '-50%',
+          zIndex: 5,
+          mixBlendMode: 'lighten',
+          opacity: 0.3,
+          pointerEvents: 'none',
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore Allow CSS custom properties
+          '--mx': '-9999px',
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore Allow CSS custom properties
+          '--my': '-9999px',
+          WebkitMaskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
+          maskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat',
+        } as React.CSSProperties}
+      />
+    </div>
+  );
+}
 
 export default Home;
