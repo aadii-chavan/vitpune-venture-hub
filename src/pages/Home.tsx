@@ -55,7 +55,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0">
-          <DarkVeil />
+          <DarkVeil hueShift={20} />
         </div>
         <div className="absolute inset-0 bg-gradient-glow" />
         
