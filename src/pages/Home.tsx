@@ -7,6 +7,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/s
 import LaserFlow from '@/components/LaserFlow';
 import { useRef } from 'react';
 import img25 from '@/assets/25.png';
+import glimpse3 from '@/assets/glimpse3.jpg';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -169,14 +170,17 @@ function LaserFlowBoxExample() {
   return (
     <div 
       style={{ 
+        width: '100vw',
         height: '800px', 
         position: 'relative', 
         overflow: 'hidden',
         backgroundColor: '#060010',
-        borderRadius: '22px',
-        margin: '0 auto',
-        maxWidth: '1000px',
-        marginBottom: '2rem'
+        borderRadius: '0', // remove rounded corners for edge-to-edge
+        margin: 0,
+        left: '50%',
+        right: '50%',
+        transform: 'translateX(-50%)',
+        marginBottom: '2rem',
       }}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -235,7 +239,7 @@ function LaserFlowBoxExample() {
       </div>
       <img
         ref={revealImgRef}
-        src="/placeholder.svg"
+        src={glimpse3}
         alt="Reveal effect"
         style={{
           position: 'absolute',
