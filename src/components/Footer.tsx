@@ -21,7 +21,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Mail, href: 'mailto:vedc@vitpune.edu.in', label: 'Email' },
+    { icon: Mail, href: 'mailto:edc@vit.edu', label: 'Email' },
   ];
 
   return (
@@ -97,7 +97,7 @@ const Footer = () => {
               <li className="flex items-start gap-2 justify-center md:justify-start">
                 <Mail size={16} className="mt-0.5 flex-shrink-0" />
                 <a href="mailto:vedc@vitpune.edu.in" className="hover:text-white transition-colors">
-                  vedc@vitpune.edu.in
+                  edc@vit.edu
                 </a>
               </li>
               <li className="flex items-start gap-2 justify-center md:justify-start">
