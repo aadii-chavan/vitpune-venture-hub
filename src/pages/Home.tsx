@@ -69,12 +69,7 @@ const Home: React.FC = () => {
               </Link>
             </div>
 
-            <div className="relative">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
-                Inspire • Innovate • Empower
-              </h2>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-            </div>
+            {/* Removed Inspire • Innovate • Empower and purple underline */}
 
             <div className="space-y-4 sm:space-y-6">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white/90 leading-tight">
