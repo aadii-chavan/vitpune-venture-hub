@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import DarkVeil from '@/components/DarkVeil';
 import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
-import { PinContainer } from '@/components/ui/3d-pin';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import esummit from '@/assets/esummit.png';
@@ -15,6 +14,7 @@ import ScrollFloat from '@/components/ScrollFloat';
 import ScrollReveal from '@/components/ScrollReveal';
 import logo from "@/assets/logo.png";
 import { Link } from 'react-router-dom';
+import RippleGrid from '@/components/RippleGrid';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -107,7 +107,18 @@ const Home: React.FC = () => {
       {/* Vision, Mission, Objectives */}
       <section id="about" className="py-20 bg-transparent relative">
 
-
+      <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', zIndex: -1}}>
+        <RippleGrid
+            enableRainbow={false}
+            gridColor="#ffffff"
+            rippleIntensity={0.05}
+            gridSize={10}
+            gridThickness={15}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.2}
+            opacity={0.8}
+        />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
             <ScrollFloat
@@ -126,7 +137,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
+            <div className="mx-auto">
               <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -140,9 +151,9 @@ const Home: React.FC = () => {
                   To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
                 </p>
               </div>
-            </PinContainer>
+            </div>
 
-            <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
+            <div className="mx-auto">
               <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -156,9 +167,9 @@ const Home: React.FC = () => {
                   Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
                 </p>
               </div>
-            </PinContainer>
+            </div>
 
-            <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
+            <div className="mx-auto">
               <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -172,7 +183,7 @@ const Home: React.FC = () => {
                   Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
                 </p>
               </div>
-            </PinContainer>
+            </div>
           </div>
         </div>
       </section>
