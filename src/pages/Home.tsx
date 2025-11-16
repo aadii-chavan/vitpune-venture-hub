@@ -15,6 +15,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import logo from "@/assets/logo.png";
 import { Link } from 'react-router-dom';
 import RippleGrid from '@/components/RippleGrid';
+import VisionMissionCard from '@/components/VisionMissionCard';
 
 const Home: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -137,53 +138,24 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="mx-auto">
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Target size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Vision
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
-                </p>
-              </div>
-            </div>
-
-            <div className="mx-auto">
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Lightbulb size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Mission
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
-                </p>
-              </div>
-            </div>
-
-            <div className="mx-auto">
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Users size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Objectives
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
-                </p>
-              </div>
-            </div>
+            <VisionMissionCard
+              type="vision"
+              title="Our Vision"
+              description="To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures."
+              spotlightColor="rgba(0,170,255,0.17)"
+            />
+            <VisionMissionCard
+              type="mission"
+              title="Our Mission"
+              description="Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders."
+              spotlightColor="rgba(132, 0, 255, 0.23)"
+            />
+            <VisionMissionCard
+              type="objectives"
+              title="Our Objectives"
+              description="Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives."
+              spotlightColor="rgba(38, 210, 95, 0.16)"
+            />
           </div>
         </div>
       </section>
@@ -191,7 +163,7 @@ const Home: React.FC = () => {
 
 
       {/* Magazines */}
-      <section id="vedc-magazines" className="py-20 bg-transparent">
+      <section id="vedc-magazines" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
             <ScrollFloat
