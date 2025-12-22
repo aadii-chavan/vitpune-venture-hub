@@ -276,61 +276,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="py-16 px-6 glass-effect mt-24">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            
-            {/* Address */}
-            <div>
-              <h4 className="text-2xl font-bold mb-4" style={{ color: 'rgb(168, 85, 247)' }}>
-                Address
-              </h4>
-              <p className="text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-                Vishwakarma Institute of Technology<br />
-                666, Upper Indiranagar, Bibwewadi,<br />
-                Pune, Maharashtra, India - 411 037
-              </p>
-            </div>
-
-            {/* Social Media */}
-            <div>
-              <h4 className="text-2xl font-bold mb-4" style={{ color: 'rgb(168, 85, 247)' }}>
-                Connect With Us
-              </h4>
-              <div className="flex gap-4">
-                {/* Instagram */}
-                <a href="#" className="w-12 h-12 rounded-full glass-effect-light flex items-center justify-center hover:bg-purple-600 transition-all duration-300" style={{ color: 'rgb(236, 72, 153)' }}>
-                  <Instagram size={20} />
-                </a>
-                {/* Facebook */}
-                <a href="#" className="w-12 h-12 rounded-full glass-effect-light flex items-center justify-center hover:bg-purple-600 transition-all duration-300" style={{ color: 'rgb(236, 72, 153)' }}>
-                  <Facebook size={20} />
-                </a>
-                {/* YouTube */}
-                <a href="#" className="w-12 h-12 rounded-full glass-effect-light flex items-center justify-center hover:bg-purple-600 transition-all duration-300" style={{ color: 'rgb(236, 72, 153)' }}>
-                  <Youtube size={20} />
-                </a>
-                {/* Twitter */}
-                <a href="#" className="w-12 h-12 rounded-full glass-effect-light flex items-center justify-center hover:bg-purple-600 transition-all duration-300" style={{ color: 'rgb(236, 72, 153)' }}>
-                  <Twitter size={20} />
-                </a>
-                {/* LinkedIn */}
-                <a href="#" className="w-12 h-12 rounded-full glass-effect-light flex items-center justify-center hover:bg-purple-600 transition-all duration-300" style={{ color: 'rgb(236, 72, 153)' }}>
-                  <Linkedin size={20} />
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-slate-700 text-center">
-            <p className="text-slate-400" style={{ fontWeight: 300 }}>
-              © 2025 VIT Entrepreneurship Development Cell. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

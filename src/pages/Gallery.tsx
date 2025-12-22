@@ -3,19 +3,28 @@ import { useState } from 'react';
 import SectionHeader from '@/components/SectionHeader';
 import GalleryItem from '@/components/GalleryItem';
 
+
+import img1 from '../assets/gallery/1.jpg'
+import img2 from '../assets/gallery/2.jpg'
+import img3 from '../assets/gallery/3.jpg'
+import img4 from '../assets/gallery/4.jpg'
+import img5 from '../assets/gallery/5.jpg'
+import img6 from '../assets/gallery/6.jpg'
+import img7 from '../assets/gallery/7.jpg'
+
 const Gallery = () => {
   const categories = ['All', 'E-Summit', 'Workshops', 'Networking', 'Competitions'];
   const [activeCategory, setActiveCategory] = useState('All');
 
   // Placeholder gallery items (replace with actual images)
   const galleryItems = [
-    { image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800', title: 'E-Summit 2023 Opening', category: 'E-Summit' },
-    { image: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800', title: 'Startup Workshop', category: 'Workshops' },
-    { image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800', title: 'Networking Session', category: 'Networking' },
-    { image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800', title: 'Pitch Competition', category: 'Competitions' },
-    { image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800', title: 'Panel Discussion', category: 'E-Summit' },
-    { image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800', title: 'Innovation Workshop', category: 'Workshops' },
-    { image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800', title: 'Investor Meetup', category: 'Networking' },
+    { image: img1, title: 'E-Summit 2023 Opening', category: 'E-Summit' },
+    { image: img2, title: 'Startup Workshop', category: 'Workshops' },
+    { image: img3, title: 'Networking Session', category: 'Networking' },
+    { image: img4, title: 'Pitch Competition', category: 'Competitions' },
+    { image: img5, title: 'Panel Discussion', category: 'E-Summit' },
+    { image: img6, title: 'Innovation Workshop', category: 'Workshops' },
+    { image: img7, title: 'Investor Meetup', category: 'Networking' },
     { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800', title: 'Team Building', category: 'Workshops' },
     { image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800', title: 'Hackathon Finals', category: 'Competitions' },
     { image: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800', title: 'Guest Speaker', category: 'E-Summit' },

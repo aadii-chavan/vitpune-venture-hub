@@ -2,22 +2,23 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
+
 import ColorBends from './ui/ColorBends';
 import logo from "@/assets/logo.png";
 
 const LOGO_SIZES = {
-  mobile: 'h-24',
-  sm: 'h-32',
-  md: 'h-[400px]',
-  lg: 'h-[500px]',
-  xl: 'h-[600px]',
+  mobile: 'h-20',
+  sm: 'h-24',
+  md: 'h-32',
+  lg: 'h-36',
+  xl: 'h-40',
 };
 
-const Hero: React.FC = () => {
-  const logoRef = useRef<HTMLImageElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
+const Hero = () => {
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const buttonsRef = useRef(null);
 
   useEffect(() => {
     if (logoRef.current) {
@@ -53,13 +54,13 @@ const Hero: React.FC = () => {
     }
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden font-['Poppins']">
       <div className="absolute inset-0 z-0 w-full h-full bg-black">
         <ColorBends 
           colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
@@ -103,14 +104,13 @@ const Hero: React.FC = () => {
             We are a community of entrepreneurs, innovators, and dreamers who are passionate about shaping the future.
           </motion.p>
 
-          {/* ---- FIXED RESPONSIVE BUTTONS ---- */}
           <motion.div
             ref={buttonsRef}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2"
           >
             <motion.button
               onClick={() => scrollToSection('#projects')}
-              className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black 
+              className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 hover:from-pink-700 hover:via-purple-700 hover:to-cyan-700 shadow-[0_8px_30px_rgba(0,0,0,0.25)] 
               px-5 py-2 text-sm sm:text-base sm:px-7 sm:py-3
               w-[90%] max-w-[260px] sm:w-auto"
               whileHover={{ scale: 1.05 }}
@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
 
             <motion.button
               onClick={() => scrollToSection('#about')}
-              className="rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15
+              className="rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15 backdrop-blur-sm
               px-5 py-2 text-sm sm:text-base sm:px-7 sm:py-3
               w-[90%] max-w-[260px] sm:w-auto"
               whileHover={{ scale: 1.05 }}
