@@ -1,195 +1,144 @@
-import React, { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import DarkVeil from "@/components/DarkVeil";
+import React, { useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import ColorBends from './ui/ColorBends';
+import logo from "@/assets/logo.png";
 
-const HeroSection: React.FC = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+const LOGO_SIZES = {
+  mobile: 'h-24',
+  sm: 'h-32',
+  md: 'h-[400px]',
+  lg: 'h-[500px]',
+  xl: 'h-[600px]',
+};
+
+const Hero: React.FC = () => {
+  const logoRef = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    if (logoRef.current) {
+      gsap.fromTo(logoRef.current, {
+        opacity: 0, scale: 0.8, y: -30
+      }, {
+        opacity: 1, scale: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.2
+      });
+    }
+
+    if (titleRef.current) {
+      gsap.fromTo(titleRef.current, {
+        opacity: 0, y: 50
+      }, {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5
+      });
+    }
+
+    if (subtitleRef.current) {
+      gsap.fromTo(subtitleRef.current, {
+        opacity: 0, y: 30
+      }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.8
+      });
+    }
+
+    if (buttonsRef.current) {
+      gsap.fromTo(buttonsRef.current.children, {
+        opacity: 0, y: 30
+      }, {
+        opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out', delay: 1.1
+      });
+    }
   }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setMousePos({ x, y });
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section
-      id="home"
-      className="min-h-screen relative flex items-center justify-center overflow-hidden text-center"
-      onMouseMove={handleMouseMove}
-    >
-      {/* 🔮 DarkVeil Background */}
-      <div className="absolute inset-0 z-0">
-        <DarkVeil speed={1.4} />
-      </div>
-
-      {/* 🌟 Animated gradient orbs */}
-      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "4s" }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "5s", animationDelay: "1s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "6s", animationDelay: "2s" }}
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0 z-0 w-full h-full bg-black">
+        <ColorBends 
+          colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
+          rotation={30}
+          speed={0.3}
+          scale={1.0}
+          frequency={1.5}
+          warpStrength={1.0}
+          mouseInfluence={0.9}
+          parallax={0.9}
+          noise={0.08}
+          transparent={true}
         />
       </div>
 
-      {/* 💫 Cursor glow */}
-      <div
-        className="absolute z-[2] pointer-events-none"
-        style={{
-          left: `${mousePos.x}px`,
-          top: `${mousePos.y}px`,
-          transform: "translate(-50%, -50%)",
-          width: "400px",
-          height: "400px",
-          background:
-            "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
-          transition: "opacity 0.3s ease",
-        }}
-      />
-
-      {/* ✨ Main Centered Content */}
-      <div
-        className={`relative z-10 flex flex-col items-center justify-center max-w-5xl px-6 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        {/* Title + Tagline */}
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-wide animate-gradient bg-[length:200%_auto]">
-            Inspire • Innovate • Empower
-          </h2>
-          <div className="w-3/4 mx-auto h-1 mt-2 bg-gradient-to-r from-transparent via-purple-500 to-transparent animate-pulse" />
-        </div>
-
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6">
-          <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-            Nurturing Innovation
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-            And Fostering Startups
-          </span>
-          <br />
-          <span className="text-white/90">at VIT Pune</span>
-        </h1>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-          <button
-            onClick={() => scrollToSection("#projects")}
-            className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white transition-all duration-300 shadow-[0_8px_30px_rgba(139,92,246,0.3)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.5)] hover:text-black hover:scale-105 w-full sm:w-auto overflow-hidden"
-          >
-            <span className="relative z-[2] flex items-center gap-2 px-8 py-4 sm:px-9">
-              <span className="font-bold">Join V-EDC</span>
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </span>
-            <svg
-              className="absolute inset-0 -z-0 rounded-[inherit]"
-              width="100%"
-              height="100%"
-              viewBox="0 0 100 40"
-              preserveAspectRatio="none"
-            >
-              <rect
-                x="1.5"
-                y="1.5"
-                width="97"
-                height="37"
-                rx="10"
-                ry="10"
-                className="transition-all duration-300 fill-purple-600 group-hover:fill-white"
-              />
-              <rect
-                x="1.5"
-                y="1.5"
-                width="97"
-                height="37"
-                rx="10"
-                ry="10"
-                fill="none"
-                stroke="rgba(255,255,255,0.5)"
-                strokeWidth="1.5"
-                className="animate-dash"
-              />
-            </svg>
-          </button>
-
-          <button
-            onClick={() => scrollToSection("#about")}
-            className="group px-8 py-4 sm:px-9 rounded-xl font-semibold text-white/90 bg-white/5 border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-sm w-full sm:w-auto hover:scale-105"
-          >
-            <span className="flex items-center justify-center gap-2">
-              View Events
-              <span className="group-hover:rotate-45 transition-transform">
-                ✨
-              </span>
-            </span>
-          </button>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="pt-12 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex justify-center pt-2">
-            <div className="w-1 h-2 bg-white/50 rounded-full animate-pulse" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="space-y-6 sm:space-y-8 md:space-y-10">
+          
+          <div className="flex justify-center mb-6">
+            <motion.img
+              ref={logoRef}
+              src={logo}
+              alt="VEDC Logo"
+              className={`${LOGO_SIZES.mobile} sm:${LOGO_SIZES.sm} md:${LOGO_SIZES.md} lg:${LOGO_SIZES.lg} xl:${LOGO_SIZES.xl} w-auto object-contain`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            />
           </div>
+
+          <motion.h1
+            ref={titleRef}
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white/90 tracking-tight leading-tight"
+          >
+            Inspire. Empower. Innovate.
+          </motion.h1>
+
+          <motion.p
+            ref={subtitleRef}
+            className="text-sm sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto px-2 leading-relaxed"
+          >
+            We are a community of entrepreneurs, innovators, and dreamers who are passionate about shaping the future.
+          </motion.p>
+
+          {/* ---- FIXED RESPONSIVE BUTTONS ---- */}
+          <motion.div
+            ref={buttonsRef}
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2"
+          >
+            <motion.button
+              onClick={() => scrollToSection('#projects')}
+              className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black 
+              px-5 py-2 text-sm sm:text-base sm:px-7 sm:py-3
+              w-[90%] max-w-[260px] sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="flex items-center gap-2">
+                View Events
+                <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <ArrowRight size={18} />
+                </motion.span>
+              </span>
+            </motion.button>
+
+            <motion.button
+              onClick={() => scrollToSection('#about')}
+              className="rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15
+              px-5 py-2 text-sm sm:text-base sm:px-7 sm:py-3
+              w-[90%] max-w-[260px] sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              About Us
+            </motion.button>
+          </motion.div>
         </div>
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          25% { transform: translateY(-20px) translateX(10px); }
-          50% { transform: translateY(-40px) translateX(-10px); }
-          75% { transform: translateY(-20px) translateX(5px); }
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-float {
-          animation: float linear infinite;
-        }
-
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-        }
-
-        .animate-dash {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: dash 20s linear infinite;
-        }
-
-        @keyframes dash {
-          to { stroke-dashoffset: 0; }
-        }
-      `}</style>
     </section>
   );
 };
 
-export default HeroSection;
+export default Hero;
