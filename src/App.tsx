@@ -22,7 +22,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}>
         <div className="min-h-screen flex flex-col bg-background">
           <Navbar />
           <main className="flex-1">

@@ -1,37 +1,96 @@
 import React, { useRef } from 'react';
 import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
-import { PinContainer } from '@/components/ui/3d-pin';
-import LaserFlow from '@/components/LaserFlow';
-import img25 from '@/assets/25.png';
+import LogoLoop from '@/components/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import esummit from '@/assets/esummit.png';
+
 import img2 from '@/assets/2.png';
 import mag5 from '@/assets/mag_5.jpeg';
 import mag6 from '@/assets/mag_6.jpg';
 import CardSwap, { Card } from '@/components/CardSwap';
-import Threads from '@/components/Threads';
+
 import ScrollFloat from '@/components/ScrollFloat';
 import ScrollReveal from '@/components/ScrollReveal';
-import HeroSection from '@/components/Hero';
-
-// Import Swiper
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import logo from "@/assets/logo.png";
+import { Link } from 'react-router-dom';
+import RippleGrid from '@/components/RippleGrid';
+import VisionMissionCard from '@/components/VisionMissionCard';
 
 const Home: React.FC = () => {
 
   return (
     <>
       {/* Hero Section */}
-      <HeroSection />
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* DarkVeil Background */}
+        <div className="absolute inset-0 z-0">
+          <DarkVeil speed={1.4} />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-6 sm:space-y-8 md:space-y-10 [&>*:last-child]:mb-0">
+            
+            {/* ✅ Logo Only (left aligned, no border/text) */}
+            <div className="flex justify-start">
+              <Link to="/" className={styles.logoWrapper}>
+                <div className={styles.logoBox}>
+                  <img src={logo} alt="V-EDC logo" className={styles.logoImg} />
+                </div>
+              </Link>
+            </div>
+
+            {/* Removed Inspire • Innovate • Empower and purple underline */}
+
+            <div className="space-y-4 sm:space-y-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white/90 leading-tight">
+                Nurturing innovation and fostering startups at VIT Pune
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed px-2">
+                Inspire, Innovate, Incubate. Building the future of entrepreneurship through clear vision and actionable mission
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+              <button
+                onClick={() => scrollToSection('#projects')}
+                className="group relative inline-flex items-center justify-center rounded-xl font-semibold text-white transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:text-black w-full sm:w-auto"
+              >
+                <span className="relative z-[2] flex items-center gap-2 px-6 py-3 sm:px-7">
+                  <span>Join V-EDC</span>
+                  <ArrowRight size={18} />
+                </span>
+                <svg className="absolute inset-0 -z-0 rounded-[inherit]" width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
+                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="transparent" />
+                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" className="transition-colors fill-black/70 group-hover:fill-white" />
+                  <rect x="1.5" y="1.5" width="97" height="37" rx="10" ry="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" className="animate-dash" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollToSection('#about')}
+                className="px-6 py-3 sm:px-7 rounded-xl font-semibold text-white/90 bg-white/10 border border-white/10 hover:bg-white/15 transition-colors w-full sm:w-auto"
+              >
+                View Events
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Vision, Mission, Objectives */}
       <section id="about" className="py-20 bg-transparent relative">
-        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-          <Threads amplitude={4.3} distance={0.7} enableMouseInteraction={true} />
-        </div>
 
+      <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', zIndex: -1}}>
+        <RippleGrid
+            enableRainbow={false}
+            gridColor="#ffffff"
+            rippleIntensity={0.05}
+            gridSize={10}
+            gridThickness={15}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.2}
+            opacity={0.8}
+        />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
             <ScrollFloat
@@ -50,85 +109,31 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
-              {/* ✅ FIX: Added w-full max-w-[22rem] */}
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-full max-w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Target size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Vision
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
-                </p>
-              </div>
-            </PinContainer>
-
-            <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
-              {/* ✅ FIX: Added w-full max-w-[22rem] */}
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-full max-w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Lightbulb size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Mission
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
-                </p>
-              </div>
-            </PinContainer>
-
-            <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
-              {/* ✅ FIX: Added w-full max-w-[22rem] */}
-              <div className="flex flex-col gap-3 p-4 tracking-tight text-slate-100/80 w-full max-w-[22rem] h-[13rem]">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Users size={20} className="text-white/80" />
-                  </div>
-                  <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-                    Our Objectives
-                  </div>
-                </div>
-                <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-                  Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
-                </p>
-              </div>
-            </PinContainer>
+            <VisionMissionCard
+              type="vision"
+              title="Our Vision"
+              description="To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures."
+              spotlightColor="rgba(0,170,255,0.17)"
+            />
+            <VisionMissionCard
+              type="mission"
+              title="Our Mission"
+              description="Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders."
+              spotlightColor="rgba(132, 0, 255, 0.23)"
+            />
+            <VisionMissionCard
+              type="objectives"
+              title="Our Objectives"
+              description="Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives."
+              spotlightColor="rgba(38, 210, 95, 0.16)"
+            />
           </div>
         </div>
       </section>
 
-      {/* Events & Campaigns */}
-      <section id="events-campaigns" className="pt-0 pb-20 bg-black">
-        <LaserFlowBoxExample />
-
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mt-10 md:mt-14">
-            <ScrollFloat
-              animationDuration={1}
-              ease='back.inOut(2)'
-              scrollStart='center bottom+=50%'
-              scrollEnd='bottom bottom-=40%'
-              stagger={0.05}
-              textClassName="font-heading text-4xl md:text-5xl font-extrabold tracking-tight text-white"
-            >
-              Events and Campaigns
-            </ScrollFloat>
-            <p className="mt-4 text-base md:text-lg text-slate-300/90">
-              Discover our signature events and impactful campaigns designed to inspire entrepreneurship and innovation at VIT Pune.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Magazines */}
-      <section id="vedc-magazines" className="py-20 bg-transparent">
+      <section id="vedc-magazines" className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
             <ScrollFloat
@@ -388,106 +393,5 @@ const Home: React.FC = () => {
     </>
   );
 };
-
-// LaserFlowBoxExample (No changes)
-function LaserFlowBoxExample() {
-  const revealImgRef = useRef<HTMLImageElement>(null); 
-
-  return (
-    <div
-      style={{
-        width: '100%',
-        height: '75vh',
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundColor: '#060010',
-        borderRadius: '0', 
-        marginBottom: '2rem',
-      }}
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const el = revealImgRef.current;
-        if (el) {
-          el.style.setProperty('--mx', `${x}px`);
-          el.style.setProperty('--my', `${y + rect.height * 0.5}px`);
-        }
-      }}
-      onMouseLeave={() => {
-        const el = revealImgRef.current;
-        if (el) {
-          el.style.setProperty('--mx', '-9999px');
-          el.style.setProperty('--my', '-9999px');
-        }
-      }}
-    >
-      <LaserFlow
-        horizontalBeamOffset={0.1}
-        verticalBeamOffset={0.0}
-        color="#4C56ED"
-        horizontalSizing={0.51}
-        verticalSizing={5}
-        wispDensity={5}
-        wispSpeed={4.5}
-        wispIntensity={17.2}
-        flowSpeed={0.55}
-        flowStrength={0.26}
-        fogIntensity={0.57}
-        fogScale={0.42}
-        fogFallSpeed={0.94}
-        decay={1.98}
-        falloffStart={0.68}
-      />
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '92%',
-        height: '58%',
-        backgroundColor: '#060010',
-        borderRadius: '20px',
-        border: '2px solid #4C56ED',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontSize: '1.5rem',
-        zIndex: 6
-      }}>
-        <img src={img25} alt="E-Summit 25" style={{ 
-            maxWidth: '100%', 
-            maxHeight: '90%', 
-            borderRadius: '16px', 
-            boxShadow: '0 4px 32px #4C56ED88', 
-            border: '2px solid #4C56ED' 
-        }} />
-      </div>
-      <img
-        ref={revealImgRef}
-        src={esummit}
-        alt="Reveal effect"
-        style={{
-          position: 'absolute',
-          width: '120%',
-          top: '-60%',
-          zIndex: 5,
-          mixBlendMode: 'lighten',
-          opacity: 0.25,
-          pointerEvents: 'none',
-          // @ts-ignore
-          '--mx': '-9999px',
-          // @ts-ignore
-          '--my': '-9999px',
-          WebkitMaskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
-          maskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat',
-        } as React.CSSProperties}
-      />
-    </div>
-  );
-}
 
 export default Home;
