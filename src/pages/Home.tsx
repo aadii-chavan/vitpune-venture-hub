@@ -3,7 +3,7 @@ import { ArrowRight, Target, Lightbulb, Users } from 'lucide-react';
 import { PinContainer } from '@/components/ui/3d-pin';
 import LaserFlow from '@/components/LaserFlow';
 import img25 from '@/assets/25.png';
-import esummit from '@/assets/esummit.png';
+import esummit from '@/assets/25.png';
 import CardSwap, { Card } from '@/components/CardSwap';
 import Threads from '@/components/Threads';
 import ScrollFloat from '@/components/ScrollFloat';
@@ -27,8 +27,7 @@ const Home: React.FC = () => {
       <HeroSection />
 
       {/* Vision, Mission, Objectives */}
-<section id="about" className="py-24 bg-transparent relative">
-
+<section id="about" className="py-24 bg-transparent relative overflow-hidden">
   {/* Background */}
   <div
     style={{
@@ -48,8 +47,10 @@ const Home: React.FC = () => {
   </div>
 
   {/* Content */}
-  <div className="container mx-auto px-4 relative z-10">
-    <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+  <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+    
+    {/* Header Section */}
+    <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
       <ScrollFloat
         animationDuration={1}
         ease="back.inOut(2)"
@@ -61,66 +62,46 @@ const Home: React.FC = () => {
         Vision, Mission & Objectives
       </ScrollFloat>
 
-      <p className="mt-4 text-base md:text-lg text-slate-300/90">
+      <p className="mt-4 text-base md:text-lg text-slate-300/90 max-w-2xl mx-auto">
         What drives V-EDC: our long-term vision, our core mission, and the outcomes we pursue.
       </p>
     </div>
 
-    {/* Cards */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <PinContainer title="Our Vision" href="#about" containerClassName="mx-auto">
-        <div className="flex flex-col gap-3 p-5 tracking-tight text-slate-100/80 
-        w-full max-w-[24rem] min-h-[15rem]">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <Target size={22} className="text-white/80" />
-            </div>
-            <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-              Our Vision
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-            To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
-          </p>
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+      
+      {/* Vision Card */}
+      <div className="relative group p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 flex flex-col items-center text-center">
+        <div className="w-16 h-16 mb-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
+          <Target size={32} className="text-white/80" />
         </div>
-      </PinContainer>
+        <h3 className="font-heading text-2xl font-bold text-white mb-4">Our Vision</h3>
+        <p className="text-sm md:text-base leading-relaxed text-slate-400">
+          To foster a vibrant entrepreneurial ecosystem at VIT Pune, empowering students to transform innovative ideas into impactful ventures.
+        </p>
+      </div>
 
-      <PinContainer title="Our Mission" href="#about" containerClassName="mx-auto">
-        <div className="flex flex-col gap-3 p-5 tracking-tight text-slate-100/80 
-        w-full max-w-[24rem] min-h-[15rem]">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <Lightbulb size={22} className="text-white/80" />
-            </div>
-            <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-              Our Mission
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-            Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
-          </p>
+      {/* Mission Card */}
+      <div className="relative group p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 flex flex-col items-center text-center">
+        <div className="w-16 h-16 mb-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
+          <Lightbulb size={32} className="text-white/80" />
         </div>
-      </PinContainer>
+        <h3 className="font-heading text-2xl font-bold text-white mb-4">Our Mission</h3>
+        <p className="text-sm md:text-base leading-relaxed text-slate-400">
+          Providing mentorship, resources, and networking opportunities to nurture the next generation of entrepreneurs and business leaders.
+        </p>
+      </div>
 
-      <PinContainer title="Our Objectives" href="#about" containerClassName="mx-auto">
-        <div className="flex flex-col gap-3 p-5 tracking-tight text-slate-100/80 
-        w-full max-w-[24rem] min-h-[15rem]">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <Users size={22} className="text-white/80" />
-            </div>
-            <div className="font-heading text-2xl md:text-3xl font-extrabold text-slate-100">
-              Our Objectives
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base leading-relaxed text-slate-300/90">
-            Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
-          </p>
+      {/* Objectives Card */}
+      <div className="relative group p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 flex flex-col items-center text-center">
+        <div className="w-16 h-16 mb-6 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
+          <Users size={32} className="text-white/80" />
         </div>
-      </PinContainer>
+        <h3 className="font-heading text-2xl font-bold text-white mb-4">Our Objectives</h3>
+        <p className="text-sm md:text-base leading-relaxed text-slate-400">
+          Building a community of innovators, facilitating skill development, and creating pathways for startup success through strategic initiatives.
+        </p>
+      </div>
 
     </div>
   </div>
@@ -202,7 +183,7 @@ function LaserFlowBoxExample() {
       }}
     >
       <LaserFlow
-        horizontalBeamOffset={0.1}
+        horizontalBeamOffset={0.00}
         verticalBeamOffset={0.0}
         color="#4C56ED"
         horizontalSizing={0.51}

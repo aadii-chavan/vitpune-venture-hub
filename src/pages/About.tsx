@@ -1,281 +1,175 @@
-import { useEffect } from 'react';
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Instagram, Facebook, Youtube, Twitter, Linkedin } from 'lucide-react';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { AnimatedText } from '../components/AnimatedText';
+import { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { ArrowDown, Target, Eye, Rocket, Zap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import clg from '../assets/clg.jpg'
+import Starfield from '../components/ui/Starfield'; // Using your updated Grid/Starfield file
 
-export default function App() {
-  const { scrollY } = useScroll();
+// Glacier Palette Constants
+const COLORS = {
+  frost: '#D6D6DB',    // Lightest
+  silver: '#AFB7C7',   // Soft Gray
+  steel: '#8A9BB4',    // Border/Muted
+  medium: '#667B98',   // Accent
+  glacier: '#2C6EA1',  // Primary Blue
+  deep: '#0a0c10',     // Background
+};
 
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-  }, []);
+export default function AboutPage() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-  // 3D text rotation effect
-  const textRotateX = useTransform(scrollY, [0, 500], [0, 45]);
-  const textY = useTransform(scrollY, [0, 500], [0, -200]);
-  const textOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  
+  // Depth effects
+  const scale = useTransform(smoothProgress, [0, 0.2], [1, 0.8]);
+  const rotate = useTransform(smoothProgress, [0, 0.2], [0, -5]);
+  const opacity = useTransform(smoothProgress, [0, 0.1], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-          font-family: 'Poppins', sans-serif;
-        }
-        
-        :root {
-          --color-primary: rgb(168, 85, 247);
-          --color-primary-light: rgb(216, 180, 254);
-          --color-primary-dark: rgb(126, 34, 206);
-          --color-accent: rgb(236, 72, 153);
-          --color-secondary: rgb(251, 146, 60);
-        }
-        
-        .glass-effect {
-          background: rgba(15, 23, 42, 0.7);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(168, 85, 247, 0.2);
-        }
-        
-        .glass-effect-light {
-          background: rgba(30, 41, 59, 0.5);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgba(168, 85, 247, 0.15);
-        }
-        
-        .text-glow {
-          text-shadow: 0 0 20px rgba(168, 85, 247, 0.6),
-                       0 0 40px rgba(168, 85, 247, 0.4),
-                       0 0 60px rgba(236, 72, 153, 0.3);
-        }
-      `}</style>
+    <div ref={containerRef} className="bg-[#0a0c10] text-[#D6D6DB] selection:bg-[#2C6EA1] selection:text-white">
+      <Navbar />
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass-effect">
-        <Navbar></Navbar>
-      </header>
+      {/* FIXED BACKGROUND GRID */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <Starfield gridColor="#8A9BB4" speed={0.2} />
+      </div>
 
-      {/* Hero Section - 3D Text Effect */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ perspective: '1000px' }}>
-        {/* Background Image with Zoom Effect */}
+      {/* HERO SECTION: The "Diving" Effect */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
-          className="absolute inset-0 z-0"
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ scale, rotate, opacity }}
+          className="relative z-10 text-center px-4"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950 z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" 
-            alt="Technology background"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Animated background circles */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgb(168, 85, 247) 0%, transparent 70%)' }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgb(236, 72, 153) 0%, transparent 70%)' }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-        />
-
-        {/* 3D Text */}
-        <motion.h1 
-          className="text-[120px] md:text-[180px] lg:text-[220px] font-black tracking-tighter text-glow"
-          style={{ 
-            rotateX: textRotateX,
-            y: textY,
-            opacity: textOpacity,
-          }}
-        >
-          VIT E-CELL
-        </motion.h1>
-
-        {/* Badge in top right */}
-        <motion.div 
-          className="absolute top-32 right-12 z-20"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-            VIT Pune
-          </span>
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[#2C6EA1] font-bold tracking-[0.5em] uppercase text-xs mb-4 block"
+          >
+            Established 2013
+          </motion.span>
+          <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[#D6D6DB] to-[#8A9BB4]">
+            OUR STORY.
+          </h1>
+          <p className="text-[#AFB7C7] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            We Are More Than a Cell; We Are An Ecosystem Designed to Freeze Doubt And Ignite Innovation.
+          </p>
+          <motion.div 
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="mt-12 flex justify-center"
+          >
+            <ArrowDown className="text-[#2C6EA1]" size={32} />
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* About VIT Section */}
-      <section className="py-24 px-6 relative">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-center" style={{ color: 'rgb(168, 85, 247)' }}>
-              About VIT Pune
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-              Vishwakarma Institute of Technology (VIT), Pune, is a premier institution dedicated to academic excellence and innovation. With a legacy of over 40 years, VIT offers various programs in engineering and applied sciences, enriching critical thinking and innovation. The institute provides state-of-the-art laboratories, modern infrastructure, and industrial collaborations to ensure a well-rounded, practical education. Beyond academics, VIT promotes holistic development through technical fests, cultural events, and sports competitions, encouraging students to excel in all domains. With a strong alumni network, robust placement support, and global opportunities, VIT Pune stands as a hub for nurturing future leaders, innovators, and entrepreneurs.
-            </p>
-          </motion.div>
+      {/* STATS SECTION: Translucent Floating Numbers */}
+      <section className="py-20 relative z-10">
+        <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { label: 'Years of Legacy', val: '13+' },
+            { label: 'Startups Connected', val: '100+' },
+            { label: 'Annual Events', val: '5+' },
+            { label: 'Student Reach', val: '5000+' },
+          ].map((stat, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-3xl bg-[#2C6EA1]/5 border border-[#8A9BB4]/10 text-center backdrop-blur-sm"
+            >
+              <h4 className="text-4xl font-black text-[#2C6EA1] mb-2">{stat.val}</h4>
+              <p className="text-xs uppercase tracking-widest text-[#8A9BB4]">{stat.label}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Large Image Card with Glow Effect */}
-      <section className="py-24 px-6">
+      {/* CONTENT BLOCK: The "Split Glacier" Layout */}
+      <section className="py-32 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
+            {/* Left Image with Masking */}
+            <div className="lg:w-1/2 relative">
+              <div className="absolute -inset-4 bg-[#2C6EA1]/20 blur-3xl rounded-full" />
+              <div className="relative rounded-[40px] overflow-hidden border border-[#8A9BB4]/30">
+                 <img 
+                  src={clg}
+                  className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" 
+                  alt="Team" 
+                />
+              </div>
+            </div>
+
+            {/* Right Text Content */}
+            <div className="lg:w-1/2 space-y-8">
+              <h2 className="text-5xl font-black text-[#D6D6DB]">About <span className="text-[#2C6EA1]">VIT Pune.</span></h2>
+              <div className="space-y-6 text-[#AFB7C7] text-lg leading-relaxed">
+                <p>
+                  Vishwakarma Institute of Technology (VIT) Pune stands as a hub for nurturing future leaders. With over four decades of excellence, we provide a foundation where engineering meets intuition.
+                </p>
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border-l-4 border-[#2C6EA1]">
+                  <Zap className="text-[#2C6EA1]" />
+                  <p className="text-sm font-medium italic">"Innovation is not a destination, it is our default state."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INTERACTIVE CARDS: Blue Card Logic */}
+      <section className="py-32 px-6">
         <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative rounded-3xl overflow-hidden"
-            style={{
-              boxShadow: '0 0 60px rgba(168, 85, 247, 0.3), 0 0 100px rgba(236, 72, 153, 0.2)'
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
-              alt="Innovation and collaboration"
-              className="w-full h-[500px] object-cover"
-            />
-          </motion.div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Vision", icon: Eye, text: "To foster a culture of cold-blooded innovation and relentless entrepreneurship.", color: COLORS.glacier },
+              { title: "Mission", icon: Target, text: "Empowering students through real-world exposure and elite mentorship programs.", color: COLORS.medium },
+              { title: "Objectives", icon: Rocket, text: "Connecting aspiring founders with a global network of industry pioneers.", color: COLORS.steel }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -10 }}
+                className="group relative p-10 rounded-[35px] overflow-hidden transition-all"
+              >
+                {/* Blue Card Background Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#16212e] to-[#0a0c10] border border-[#2C6EA1]/30 z-0" />
+                <div className="absolute inset-0 bg-[#2C6EA1]/0 group-hover:bg-[#2C6EA1]/5 transition-colors z-0" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-[#2C6EA1]/20 flex items-center justify-center mb-8 border border-[#2C6EA1]/40">
+                    <item.icon className="text-[#2C6EA1]" size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#D6D6DB] mb-4">{item.title}</h3>
+                  <p className="text-[#AFB7C7] leading-relaxed text-sm">{item.text}</p>
+                </div>
+                
+                {/* Decorative Accent */}
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#2C6EA1]/10 blur-2xl group-hover:bg-[#2C6EA1]/20 transition-all" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* About V-EDC Section */}
-      <section className="py-24 px-6 relative">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative rounded-3xl p-12 glass-effect"
-            style={{
-              boxShadow: '0 0 80px rgba(168, 85, 247, 0.2)'
-            }}
-          >
-            <div className="absolute top-8 right-8">
-              <span className="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                Entrepreneurship
-              </span>
-            </div>
-
-            <h2 className="text-5xl md:text-6xl font-bold mb-8" style={{ color: 'rgb(168, 85, 247)' }}>
-              About V-EDC
-            </h2>
-            
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-              The V-EDC (VIT Entrepreneurship Development Cell) at VIT Pune is committed to encouraging and promoting entrepreneurial spirit in students. At V-EDC, we ensure the availability of a range of initiatives such as startup incubation, business strategy competitions, startup pitch contests all directed towards adequately training students with the necessary skills and understanding to flourish in the competitive entrepreneurship landscape. V-EDC aims to surpass thresholds and lead with entrepreneurial excellence. Come aboard on our journey to build a future where innovation knows no boundaries. V-EDC is here to direct and encourage you as you progress in your entrepreneurial venture.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Vision, Mission, Objectives - Zigzag Layout */}
-      <section id="vision" className="py-24 px-6">
-        <div className="container mx-auto max-w-6xl space-y-32">
-          
-          {/* Vision - Left Text, Right Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'rgb(168, 85, 247)' }}>
-                Vision
-              </h3>
-              <p className="text-lg text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-                To foster a culture of innovation and entrepreneurship among students, empowering them to become successful entrepreneurs and industry leaders. We envision creating an ecosystem where ideas transform into impactful ventures that contribute to society and economic growth.
-              </p>
-            </div>
-            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 40px rgba(168, 85, 247, 0.3)' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                alt="Vision"
-                className="w-full h-80 object-cover"
-              />
-            </div>
-          </motion.div>
-
-          {/* Mission - Right Text, Left Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div className="rounded-2xl overflow-hidden md:order-1 order-2" style={{ boxShadow: '0 0 40px rgba(236, 72, 153, 0.3)' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
-                alt="Mission"
-                className="w-full h-80 object-cover"
-              />
-            </div>
-            <div className="md:order-2 order-1">
-              <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'rgb(236, 72, 153)' }}>
-                Mission
-              </h3>
-              <p className="text-lg text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-                To provide a comprehensive platform for students to develop entrepreneurial skills through workshops, mentorship programs, and real-world exposure. We aim to bridge the gap between academic knowledge and practical business acumen, enabling students to launch and scale their ventures successfully.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Objectives - Left Text, Right Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'rgb(251, 146, 60)' }}>
-                Objectives
-              </h3>
-              <p className="text-lg text-slate-300 leading-relaxed" style={{ fontWeight: 400 }}>
-                To organize startup competitions, pitch events, and networking sessions that connect aspiring entrepreneurs with industry experts and investors. We focus on creating opportunities for collaboration, funding, and mentorship while building a supportive community of like-minded innovators committed to excellence.
-              </p>
-            </div>
-            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 40px rgba(251, 146, 60, 0.3)' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
-                alt="Objectives"
-                className="w-full h-80 object-cover"
-              />
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
+      {/* FINAL CTA / FOOTER ACCENT */}
+      <footer className="py-20 border-t border-[#8A9BB4]/10 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#2C6EA1] to-transparent opacity-50" />
+        <h2 className="text-[#D6D6DB] font-black text-2xl mb-4">READY TO BREAK THE ICE?</h2>
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-8 py-3 bg-[#2C6EA1] text-white rounded-full font-bold shadow-[0_0_30px_rgba(44,110,161,0.4)]"
+        >
+          Join V-EDC
+        </motion.button>
+        <p className="mt-12 text-[#8A9BB4] text-[10px] tracking-[0.4em] uppercase">VIT Pune • Innovate. Empower. Lead.</p>
+      </footer>
     </div>
   );
 }

@@ -1,537 +1,195 @@
-import { motion } from 'framer-motion';
-import { Sparkles, Users, Award, Target, Mail, Phone, Linkedin, Instagram } from 'lucide-react';
+import { motion, useMotionValue } from 'framer-motion';
+import { Mail, Phone, Shield, Activity } from 'lucide-react';
 
 // Import team photos
 import gayatriPhoto from '../assets/team/gayatri.jpg';
-import sanskritiPhoto from '../assets/team/sanskriti.jpg'
-import akshatPhoto from '../assets/team/akshat.jpg'
+import sanskritiPhoto from '../assets/team/sanskriti.jpg';
+import akshatPhoto from '../assets/team/akshat.jpg';
+import yashPhoto from '../assets/team/yash.jpg';
+import pujanPhoto from '../assets/team/pujan.png';
+import adityaPhoto from '../assets/team/aditya.jpg';
+import shreyasPhoto from '../assets/team/shreyas.jpg';
+import ayushPhoto from '../assets/team/Ayush_G.jpg';
+import sanikaPhoto from '../assets/team/Sanika Piraji .jpg';
+import utkarshPhoto from '../assets/team/Utkarsh Sisodiya .jpg';
+import finance from '../assets/team/fianance.jpg';
+import sayaliPhoto from '../assets/team/Sayali Mashale .jpg';
+import cor from '../assets/team/Anshul.jpg';
+import cor2 from '../assets/team/we.jpg';
 
-import yashPhoto from '../assets/team/yash.jpg'
-import pujanPhoto from '../assets/team/pujan.png'
+const AvengersCard = ({ name, role, email, phone, linkedinUrl, image }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
+  const handleMouseMove = (e) => {
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
 
-import adityaPhoto from '../assets/team/aditya.jpg'
-import shreyasPhoto from '../assets/team/shreyas.jpg'
-
-import ayushPhoto from '../assets/team/Ayush_G.jpg'
-
-import sanikaPhoto from '../assets/team/Sanika Piraji .jpg'
-import utkarshPhoto from '../assets/team/Utkarsh Sisodiya .jpg'
-
-import finance from '../assets/team/fianance.jpg'
-
-import sayaliPhoto from '../assets/team/Sayali Mashale .jpg'
-
-import cor from '../assets/team/Anshul.jpg'
-import cor2 from '../assets/team/we.jpg'
-
-// Enhanced TeamCard Component with Dark Theme
-const TeamCard = ({ name, role, email, phone, linkedinUrl, instagramUrl, image }) => {
-  const initials = name.split(' ').map(n => n[0]).join('');
-  
   return (
     <motion.div
-      whileHover={{ y: -12 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="relative group w-full max-w-sm mx-auto"
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      whileHover={{ y: -5 }}
+      viewport={{ once: true, margin: "-50px" }}
+      className="relative group p-[1px] bg-cyan-950/30 overflow-hidden rounded-bl-3xl rounded-tr-3xl border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-500 w-full"
     >
-      {/* Glow Effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500" />
-      
-      {/* Card */}
-      <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 group-hover:border-purple-500/50 shadow-2xl overflow-hidden transition-all duration-500">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-2xl" />
-          <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-purple-500/20 to-transparent rounded-full blur-2xl" />
-        </div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none opacity-20" />
+      <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-500 opacity-50" />
+      <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-500 opacity-50" />
 
-        <div className="relative z-10">
-          {/* Avatar/Photo with Floating Animation */}
-          <motion.div
-            whileHover={{ scale: 1.05, y: -5 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-32 h-32 mx-auto mb-6"
+      <div className="relative z-10 p-5 bg-slate-950/80 backdrop-blur-xl h-full flex flex-col">
+        <div className="relative w-full aspect-square mb-4 overflow-hidden border border-cyan-500/30 group-hover:border-cyan-400 transition-colors">
+          <div className="absolute inset-0 z-20 pointer-events-none group-hover:bg-cyan-500/10 transition-all" />
+          
+          <motion.div 
+            style={{ x: mouseX, y: mouseY, translateX: "-50%", translateY: "-50%" }}
+            className="absolute z-30 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block"
           >
-            {/* Photo Ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 p-1">
-              <div className="w-full h-full rounded-full bg-gray-900" />
-            </div>
-            
-            {/* Photo Content */}
-            <div className="absolute inset-1 rounded-full overflow-hidden shadow-2xl ring-2 ring-purple-500/20">
-              {image ? (
-                <img 
-                  src={image} 
-                  alt={name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-white tracking-tight">
-                    {initials}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Floating Sparkle */}
-            <motion.div
-              animate={{
-                y: [-5, 5, -5],
-                rotate: [0, 180, 360],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
-            >
-              <Sparkles className="w-4 h-4 text-white" />
-            </motion.div>
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-400" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-400" />
           </motion.div>
 
-          {/* Name */}
-          <h3 className="font-bold text-2xl text-center mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:via-purple-300 group-hover:to-pink-400 transition-all duration-500">
+          {image ? (
+            <img 
+              src={image} 
+              alt={name} 
+              /* REMOVED grayscale and group-hover:grayscale-0 */
+              className="w-full h-full object-cover contrast-125 transition-all duration-700" 
+            />
+          ) : (
+            <div className="w-full h-full bg-slate-900 flex items-center justify-center">
+               <Shield className="w-12 h-12 text-cyan-900" />
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-1 flex-grow">
+          <div className="flex items-center gap-2">
+            <Activity size={10} className="text-cyan-500 animate-pulse" />
+            <span className="text-[9px] font-mono text-cyan-500/70 tracking-tighter uppercase">Link Active</span>
+          </div>
+          <h3 className="text-lg font-black text-white uppercase tracking-tighter group-hover:text-cyan-300 transition-colors leading-tight">
             {name}
           </h3>
-
-          {/* Role Badge */}
-          <div className="flex justify-center mb-6">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/20 via-purple-500/20 to-pink-500/20 border border-purple-500/30 group-hover:border-purple-400/50 transition-all"
-            >
-              <Award className="w-4 h-4 text-purple-400" />
-              <span className="text-sm font-semibold text-purple-300">
-                {role}
-              </span>
-            </motion.div>
+          <div className="inline-block py-0.5 px-2 bg-cyan-500/10 border border-cyan-500/30 text-[8px] font-mono text-cyan-400 uppercase tracking-widest">
+            {role}
           </div>
+        </div>
 
-          {/* Divider */}
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-6" />
-
-          {/* Contact Info */}
-          <div className="space-y-3 mb-6">
-            <motion.a
-              whileHover={{ x: 5 }}
-              href={`mailto:${email}`}
-              className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all group/item"
-            >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/30 to-blue-600/30 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-blue-400" />
-              </div>
-              <span className="text-sm text-gray-400 group-hover/item:text-gray-200 transition-colors truncate">
-                {email}
-              </span>
-            </motion.a>
-
-            <motion.a
-              whileHover={{ x: 5 }}
-              href={`tel:${phone}`}
-              className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all group/item"
-            >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/30 to-green-600/30 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-green-400" />
-              </div>
-              <span className="text-sm text-gray-400 group-hover/item:text-gray-200 transition-colors">
-                {phone}
-              </span>
-            </motion.a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-3">
-            <motion.a
-              whileHover={{ scale: 1.15, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              href={linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg hover:shadow-blue-500/50 transition-shadow"
-            >
-              <Linkedin className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.15, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-pink-600 flex items-center justify-center text-white shadow-lg hover:shadow-pink-500/50 transition-shadow"
-            >
-              <Instagram className="w-5 h-5" />
-            </motion.a>
-          </div>
+        <div className="mt-4 grid grid-cols-4 gap-1">
+          <a href={`mailto:${email}`} className="col-span-1 h-8 flex items-center justify-center border border-cyan-500/20 hover:bg-cyan-500 hover:text-black transition-all">
+            <Mail size={12} />
+          </a>
+          <a href={`tel:${phone}`} className="col-span-1 h-8 flex items-center justify-center border border-cyan-500/20 hover:bg-cyan-500 hover:text-black transition-all">
+            <Phone size={12} />
+          </a>
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="col-span-2 h-8 flex items-center justify-center gap-1 border border-cyan-500/20 hover:bg-cyan-500 hover:text-black transition-all font-mono text-[8px] uppercase">
+             CONNECT
+          </a>
         </div>
       </div>
     </motion.div>
   );
 };
 
-// Section Header Component
-const SectionHeader = ({ title, subtitle, icon: Icon }) => (
-  <motion.div
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="text-center mb-20"
-  >
-    <motion.div
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-      className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600/30 via-purple-500/30 to-pink-500/30 mb-6 shadow-2xl border border-purple-500/20"
-    >
-      {Icon && <Icon className="w-10 h-10 text-purple-400" />}
-    </motion.div>
-    <motion.h1
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-      className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-400 via-purple-300 to-pink-400 bg-clip-text text-transparent mb-6"
-    >
-      {title}
-    </motion.h1>
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.4 }}
-      className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
-    >
-      {subtitle}
-    </motion.p>
-  </motion.div>
-);
-
 const Team = () => {
   const teamSections = [
-    {
-      title: 'Leadership',
-      icon: Target,
-      members: [
-        {
-          name: 'Rohit Dane',
-          role: 'Convener',
-          email: 'rohit.dane23@vit.edu',
-          phone: '+91 8668816853',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-      ],
-    },
-    {
-      title: 'Advisory Board',
-      icon: Award,
-      members: [
-        {
-          name: 'Ishawar Borade',
-          role: 'Chief Advisor',
-          email: 'ishawar.borade22@vit.edu',
-          phone: '+91 9156834407',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Ashlesha Wagh',
-          role: 'Chief Advisor',
-          email: 'ashlesha.wagh22@vit.edu',
-          phone: '+91 9422088506',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Pratik Jadhav',
-          role: 'Chief Advisor',
-          email: 'pratik.jadhav22@vit.edu',
-          phone: '+91 8080897812',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-      ],
-    },
-    {
-      title: 'Department Chiefs',
-      icon: Users,
-      members: [
-        {
-          name: 'Siddhi Chollangi',
-          role: 'Chief of Branding',
-          email: 'siddhi.chollangi23@vit.edu',
-          phone: '+91 9226270324',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Rushabh Mane',
-          role: 'Chief of Management',
-          email: 'rushabh.mane23@vit.edu',
-          phone: '+91 9175377652',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Rajvee Pardeshi',
-          role: 'Chief of Relations',
-          email: 'rajvee.pardeshi23@vit.edu',
-          phone: '+91 7218122005',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-      ],
-    },
-    {
-      title: 'Department Liaisons',
-      icon: Sparkles,
-      members: [
-        {
-          name: 'Labhesh Pahade',
-          role: 'Liaison of Branding',
-          email: 'labhesh.pahade23@vit.edu',
-          phone: '+91 9421340121',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Atharva Khode',
-          role: 'Liaison of Management',
-          email: 'atharva.khode23@vit.edu',
-          phone: '+91 8624004106',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-        {
-          name: 'Aditya Inamdar',
-          role: 'Liaison of Relations',
-          email: 'aditya.inamdar23@vit.edu',
-          phone: '+91 7410536280',
-          linkedinUrl: '#',
-          instagramUrl: '#',
-        },
-      ],
-    },
-    {
-      title: 'Team Secretaries',
-      icon: Users,
-      members: [
-        // { name: 'Mahi Parmar', role: 'Secretary', email: 'mahi.parmar24@vit.edu', phone: '+91 7499978075', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Sayali Mashale', role: 'Aesthetics Secretary', email: 'sayali.mashale24@vit.edu', phone: '+91 9970891426', linkedinUrl: '#', instagramUrl: '#', image: sayaliPhoto },
-        { name: 'Anshul Patidar', role: 'Corporate Relations Secretary', email: 'patidar.anshul24@vit.edu', phone: '+91 8770645003', linkedinUrl: '#', instagramUrl: '#', image: cor },
-        { name: 'Ayush Deshmukh', role: 'Corporate Relations Secretary', email: 'avush.deshmukh24@vit.edu', phone: '+91 9304857932', linkedinUrl: '#', instagramUrl: '#', image: cor2 },
-        { name: 'Jiya Rathod', role: 'Event Execution Secretary', email: 'jiya.rathod24@vit.edu', phone: '+91 9272116336', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Gaurang Bagwe', role: 'Secretary', email: 'gaurang.bagwe24@vit.edu', phone: '+91 8459250314', linkedinUrl: '#', instagramUrl: '#', image:finance },
-        { name: 'Akshat Mutha', role: 'Secretary', email: 'akshat.mutha24@vit.edu', phone: '+91 7972108827', linkedinUrl: '#', instagramUrl: '#', image: akshatPhoto },
-        { 
-          name: 'Gayatri Dhikale', 
-          role: 'Marketing and Outreach Secretary', 
-          email: 'gayatri.dhikale24@vit.edu', 
-          phone: '+91 8605573593', 
-          linkedinUrl: '#', 
-          instagramUrl: '#', 
-          image: gayatriPhoto 
-        },
-        { name: 'Sanskriti Dhakar', role: 'Marketing and Outreach Secretary', email: 'sanskriti.dhakar24@vit.edu', phone: '+91 9981949981', linkedinUrl: '#', instagramUrl: '#', image: sanskritiPhoto },
-        { name: 'Aditi Kolhapure', role: 'Secretary', email: 'aditi.kolhapure24@vit.edu', phone: '+91 8484808122', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Anuj Pol', role: 'Multimedia and Design Secretary', email: 'anuj.pol24@vit.edu', phone: '+91 7020546889', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Omkar Patil', role: 'Multimedia and Design Secretary', email: 'niwas.omkar24@vit.edu', phone: '+91 9026233081', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Atharv Kulkarni', role: 'Operations and Venue Secretary', email: 'atharva.kulkarni24@vit.edu', phone: '+91 7066218925', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Ayush Gurav', role: 'Operations and Venue Secretary', email: 'ayush.gurav23@vit.edu', phone: '+91 8999281762', linkedinUrl: '#', instagramUrl: '#', image: ayushPhoto },
-        { name: 'Sanika Piraji', role: 'Public Relations Secretary', email: 'sanika.piraji241@vit.edu', phone: '+91 9881616930', linkedinUrl: '#', instagramUrl: '#', image : sanikaPhoto },
-        { name: 'Utkarsh Sisodiya', role: 'Public Relations Secretary', email: 'utkarsh.sisodiya24@vit.edu', phone: '+91 9503326999', linkedinUrl: '#', instagramUrl: '#', image : utkarshPhoto  },
-        { name: 'Ritika Navghare', role: 'Research and Media Secretary', email: 'ritika.navghare24@vit.edu', phone: '+91 9370170173', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Shlok Borade', role: 'Research and Media Secretary', email: 'shlok.borade24@vit.edu', phone: '+91 9325084237', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Pujan Sonani', role: 'Secretary', email: 'pujan.sonani24@vit.edu', phone: '+91 9099282768', linkedinUrl: '#', instagramUrl: '#', image: pujanPhoto },
-        { name: 'Yash Nalawade', role: 'Sponsorship Secretary', email: 'yash.nalawade241@vit.edu', phone: '+91 9607484973', linkedinUrl: '#', instagramUrl: '#', image: yashPhoto },
-        { name: 'Madhura Veer', role: 'Startup Connect Secretary', email: 'madhura.veer24@vit.edu', phone: '+91 9527963484', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Manas Parikh', role: 'Startup Connect Secretary', email: 'manas.parikh24@vit.edu', phone: '+91 9529767923', linkedinUrl: '#', instagramUrl: '#' },
-        { name: 'Aditya Kale', role: 'Website and Broadcasting Secretary', email: 'aditya.kale23@vit.edu', phone: '+91 8766015040', linkedinUrl: '#', instagramUrl: '#', image: adityaPhoto },
-        { name: 'Shreyas Kudale', role: 'Website and Broadcasting Secretary', email: 'shreyas.kudale23@vit.edu', phone: '+91 9657550055', linkedinUrl: '#', instagramUrl: '#', image: shreyasPhoto },
-      ],
-    },
+    { title: 'The Leaders', members: [
+      { name: 'Rohit Dane', role: 'Convener', email: 'rohit.dane23@vit.edu', phone: '+91 8668816853', linkedinUrl: '#' },
+      { name: 'Ishawar Borade', role: 'Honorary Convener', email: 'ishawar.borade22@vit.edu', phone: '+91 9156834407', linkedinUrl: '#' }
+    ]},
+    { title: 'The Advisors', members: [
+      { name: 'Ashlesha Wagh', role: 'Chief Advisor', email: 'ashlesha.wagh22@vit.edu', phone: '+91 9422088506', linkedinUrl: '#' },
+      { name: 'Pratik Jadhav', role: 'Chief Advisor', email: 'pratik.jadhav22@vit.edu', phone: '+91 8080897812', linkedinUrl: '#' },
+    ]},
+    { title: 'The Chiefs', members: [
+      { name: 'Siddhi Chollangi', role: 'Chief of Branding', email: 'siddhi.chollangi23@vit.edu', phone: '+91 9226270324', linkedinUrl: '#' },
+      { name: 'Rushabh Mane', role: 'Chief of Management', email: 'rushabh.mane23@vit.edu', phone: '+91 9175377652', linkedinUrl: '#' },
+      { name: 'Rajvee Pardeshi', role: 'Chief of Relations', email: 'rajvee.pardeshi23@vit.edu', phone: '+91 7218122005', linkedinUrl: '#' },
+    ]},
+    { title: 'Liasons', members: [
+      { name: 'Labhesh Pahade', role: 'Liaison of Branding', email: 'labhesh.pahade23@vit.edu', phone: '+91 9421340121', linkedinUrl: '#' },
+      { name: 'Atharva Khode', role: 'Liaison of Management', email: 'atharva.khode23@vit.edu', phone: '+91 8624004106', linkedinUrl: '#' },
+      { name: 'Aditya Inamdar', role: 'Liaison of Relations', email: 'aditya.inamdar23@vit.edu', phone: '+91 7410536280', linkedinUrl: '#' },
+    ]},
+    { title: 'The Core Team', members: [
+      { name: 'Sayali Mashale', role: 'Aesthetics Secretary', email: 'sayali.mashale24@vit.edu', phone: '+91 9970891426', image: sayaliPhoto },
+      { name: 'Anshul Patidar', role: 'CR Secretary', email: 'patidar.anshul24@vit.edu', phone: '+91 8770645003', image: cor },
+      { name: 'Ayush Deshmukh', role: 'CR Secretary', email: 'avush.deshmukh24@vit.edu', phone: '+91 9304857932', image: cor2 },
+      { name: 'Jiya Rathod', role: 'Execution Secretary', email: 'jiya.rathod24@vit.edu', phone: '+91 9272116336' },
+      { name: 'Gaurang Bagwe', role: 'Secretary', email: 'gaurang.bagwe24@vit.edu', phone: '+91 8459250314', image:finance },
+      { name: 'Akshat Mutha', role: 'Secretary', email: 'akshat.mutha24@vit.edu', phone: '+91 7972108827', image: akshatPhoto },
+      { name: 'Gayatri Dhikale', role: 'Marketing Secretary', email: 'gayatri.dhikale24@vit.edu', phone: '+91 8605573593', image: gayatriPhoto },
+      { name: 'Sanskriti Dhakar', role: 'Marketing Secretary', email: 'sanskriti.dhakar24@vit.edu', phone: '+91 9981949981', image: sanskritiPhoto },
+      { name: 'Aditi Kolhapure', role: 'Design Secretary', email: 'aditi.kolhapure24@vit.edu', phone: '+91 8484808122' },
+      { name: 'Anuj Pol', role: 'Design Secretary', email: 'anuj.pol24@vit.edu', phone: '+91 7020546889' },
+      { name: 'Omkar Patil', role: 'Design Secretary', email: 'niwas.omkar24@vit.edu', phone: '+91 9026233081' },
+      { name: 'Ayush Gurav', role: 'Operations Secretary', email: 'ayush.gurav23@vit.edu', phone: '+91 8999281762', image: ayushPhoto },
+      { name: 'Sanika Piraji', role: 'PR Secretary', email: 'sanika.piraji241@vit.edu', phone: '+91 9881616930', image: sanikaPhoto },
+      { name: 'Utkarsh Sisodiya', role: 'PR Secretary', email: 'utkarsh.sisodiya24@vit.edu', phone: '+91 9503326999', image: utkarshPhoto },
+      { name: 'Ritika Navghare', role: 'Media Secretary', email: 'ritika.navghare24@vit.edu', phone: '+91 9370170173' },
+      { name: 'Shlok Borade', role: 'Media Secretary', email: 'shlok.borade24@vit.edu', phone: '+91 9325084237' },
+      { name: 'Pujan Sonani', role: 'Sponsorship Secretary', email: 'pujan.sonani24@vit.edu', phone: '+91 9099282768', image: pujanPhoto },
+      { name: 'Yash Nalawade', role: 'Sponsorship Secretary', email: 'yash.nalawade241@vit.edu', phone: '+91 9607484973', image: yashPhoto },
+      { name: 'Madhura Veer', role: 'Connect Secretary', email: 'madhura.veer24@vit.edu', phone: '+91 9527963484' },
+      { name: 'Manas Parikh', role: 'Connect Secretary', email: 'manas.parikh24@vit.edu', phone: '+91 9529767923' },
+      { name: 'Aditya Kale', role: 'Website Secretary', email: 'aditya.kale23@vit.edu', phone: '+91 8766015040', image: adityaPhoto },
+      { name: 'Shreyas Kudale', role: 'Website Secretary', email: 'shreyas.kudale23@vit.edu', phone: '+91 9657550055', image: shreyasPhoto },
+    ]},
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-purple-600/30 to-purple-500/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.3, 1, 1.3],
-            opacity: [0.25, 0.15, 0.25],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-pink-500/20 rounded-full blur-3xl"
-        />
-        
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:72px_72px]" />
+    <div className="min-h-screen bg-[#020617] text-white">
+      <div className="fixed inset-0 pointer-events-none opacity-40 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] border-[1px] border-cyan-500/10 rounded-full animate-[spin_60s_linear_infinite]" />
       </div>
 
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          title="Meet Our Team"
-          subtitle="The brilliant minds driving innovation and entrepreneurship at V-EDC"
-          icon={Users}
-        />
+      <div className="container mx-auto px-4 pt-24 pb-20 relative">
+        <header className="mb-20 text-center">
+          <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="inline-flex items-center justify-center w-16 h-16 border-2 border-cyan-500 rounded-full mb-6">
+             <Shield className="w-8 h-8 text-cyan-500" />
+          </motion.div>
+          <h1 className="text-4xl sm:text-7xl font-black italic uppercase text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-800">
+            Team Assemble
+          </h1>
+          <p className="text-cyan-500 font-mono text-xs tracking-widest mt-4 uppercase">Operational Command 2025-26</p>
+        </header>
 
         <div className="space-y-24">
-          {teamSections.map((section, sectionIndex) => (
-            <motion.section
-              key={section.title}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: sectionIndex * 0.1 }}
-            >
-              {/* Section Header */}
-              <div className="flex flex-col items-center gap-4 mb-12">
-                <motion.div
-                  initial={{ rotate: -180, scale: 0 }}
-                  whileInView={{ rotate: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, type: "spring" }}
-                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600/30 via-purple-500/30 to-pink-500/30 flex items-center justify-center shadow-2xl border border-purple-500/20"
-                >
-                  <section.icon className="w-8 h-8 text-purple-400" />
-                </motion.div>
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent text-center"
-                >
+          {teamSections.map((section) => (
+            <section key={section.title}>
+              <div className="flex items-center gap-3 mb-12">
+                <div className="h-px flex-1 bg-cyan-900" />
+                <h2 className="text-xl sm:text-3xl font-black italic uppercase tracking-widest text-cyan-400">
                   {section.title}
-                </motion.h2>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-                />
+                </h2>
+                <div className="h-px flex-1 bg-cyan-900" />
               </div>
 
-              {/* Cards Grid - CENTERED FOR ALL LAYOUTS */}
-              <div className="flex justify-center">
-                <div
-                  className={`grid gap-8 w-full ${
-                    section.members.length === 1
-                      ? 'max-w-sm'
-                      : section.members.length === 2
-                      ? 'grid-cols-1 sm:grid-cols-2 max-w-4xl'
-                      : section.members.length === 3
-                      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl'
-                      : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-                  }`}
-                >
-                  {section.members.map((member, memberIndex) => (
-                    <motion.div
-                      key={member.name}
-                      initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.5,
-                        delay: memberIndex * 0.05,
-                        type: "spring",
-                        stiffness: 100,
-                      }}
-                    >
-                      <TeamCard {...member} />
-                    </motion.div>
-                  ))}
-                </div>
+              {/* Conditional Layout: Grid for Core Team, Flex-Centered for others */}
+              <div className={
+                section.title === 'The Core Team' 
+                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" 
+                : "flex flex-wrap justify-center gap-6"
+              }>
+                {section.members.map((member) => (
+                  <div key={member.name} className={section.title === 'The Core Team' ? "w-full" : "w-full max-w-[280px]"}>
+                    <AvengersCard {...member} />
+                  </div>
+                ))}
               </div>
-            </motion.section>
+            </section>
           ))}
         </div>
 
-        {/* Enhanced CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-32 relative"
-        >
-          {/* Glow Effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-30" />
-          
-          <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-12 md:p-16 border border-gray-700/50 shadow-2xl overflow-hidden">
-            {/* Animated Background Shapes */}
-            <motion.div
-              animate={{
-                rotate: 360,
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-600/30 to-purple-500/30 rounded-full blur-2xl"
-            />
-            <motion.div
-              animate={{
-                rotate: -360,
-                scale: [1.2, 1, 1.2],
-              }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-2xl"
-            />
-
-            <div className="relative z-10">
-              <motion.div
-                animate={{
-                  y: [-5, 5, -5],
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="inline-flex mx-auto mb-6 p-4 bg-gradient-to-br from-purple-600/30 via-purple-500/30 to-pink-500/30 rounded-2xl border border-purple-500/20"
-              >
-                <Sparkles className="w-8 h-8 text-purple-400" />
-              </motion.div>
-              
-              <h3 className="text-3xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-purple-400 via-purple-300 to-pink-400 bg-clip-text text-transparent leading-tight">
-                Join Our Team
-              </h3>
-              <p className="text-gray-400 text-lg md:text-xl text-center mb-10 max-w-3xl mx-auto leading-relaxed">
-                We're always looking for passionate students to join V-EDC.
-                Be part of building the entrepreneurial ecosystem at VIT Pune.
-              </p>
-              
-              <div className="flex justify-center">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative"
-                >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 rounded-full blur opacity-60 group-hover:opacity-100 transition-opacity" />
-                  <button className="relative bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 text-white px-12 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center gap-3 overflow-hidden">
-                    <span className="relative z-10">Get in Touch</span>
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="relative z-10 text-xl"
-                    >
-                      →
-                    </motion.span>
-                  </button>
-                </motion.a>
-              </div>
-            </div>
-          </div>
+        <motion.div className="mt-32 p-8 border-2 border-cyan-500 bg-slate-950 text-center relative">
+          <h2 className="text-3xl sm:text-6xl font-black italic uppercase text-white mb-6">Access the Initiative</h2>
+          <a href="/contact" className="inline-block px-8 py-4 bg-cyan-500 text-black font-black uppercase hover:bg-white transition-all transform skew-x-[-12deg]">
+            Deploy Now
+          </a>
         </motion.div>
       </div>
     </div>
