@@ -7,9 +7,9 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 const COLORS = {
   lightGray: '#D6D6DB',
   softGray: '#AFB7C7',
-  steelBlue: '#8A9BB4',
+  steelBlue: '#b48a8aff',
   mediumBlue: '#667B98',
-  glacierBlue: '#2C6EA1',
+  glacierBlue: '#a12c2cff',
   cardBlue: '#16212e', // Added a specific blue base for the cards
   deepNavy: '#0a0c10'
 };
