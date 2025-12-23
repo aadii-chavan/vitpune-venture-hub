@@ -5,8 +5,11 @@ const AnimatedGrid = ({ gridColor = '#00ffd1', speed = 0.5 }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
-    let width = mountRef.current.clientWidth;
-    let height = mountRef.current.clientHeight;
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    let width = mount.clientWidth;
+    let height = mount.clientHeight;
 
     const scene = new THREE.Scene();
     // Fog color determines the "fade out" distance in the distance
@@ -20,7 +23,7 @@ const AnimatedGrid = ({ gridColor = '#00ffd1', speed = 0.5 }) => {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    mountRef.current.appendChild(renderer.domElement);
+    mount.appendChild(renderer.domElement);
 
     // Create the Grid Helper
     const gridSize = 200;
@@ -34,9 +37,10 @@ const AnimatedGrid = ({ gridColor = '#00ffd1', speed = 0.5 }) => {
     scene.add(gridHelper);
 
     const clock = new THREE.Clock();
+    let animationId: number;
 
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
       // Animate grid movement. Modulo (%) creates the infinite loop illusion.
@@ -49,8 +53,9 @@ const AnimatedGrid = ({ gridColor = '#00ffd1', speed = 0.5 }) => {
     animate();
 
     const handleResize = () => {
-      width = mountRef.current.clientWidth;
-      height = mountRef.current.clientHeight;
+      if (!mount) return;
+      width = mount.clientWidth;
+      height = mount.clientHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -60,7 +65,10 @@ const AnimatedGrid = ({ gridColor = '#00ffd1', speed = 0.5 }) => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement);
+      cancelAnimationFrame(animationId);
+      if (mount && renderer.domElement && mount.contains(renderer.domElement)) {
+          mount.removeChild(renderer.domElement);
+      }
       renderer.dispose();
     };
   }, [gridColor, speed]);
